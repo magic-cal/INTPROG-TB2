@@ -10,6 +10,7 @@ import java.util.ArrayList;
 public class OrderingSystem 
 {
     private Canvas canvas;
+    private PizzaInputs pizzaInputs = new PizzaInputs();
     protected ArrayList<Pizza> pizzas = new ArrayList();
     
     /**
@@ -18,7 +19,7 @@ public class OrderingSystem
     public OrderingSystem()
     {
         canvas = new Canvas("Pizza Ordering", 900, 650);        
-        
+         
     }
     
     /**
@@ -38,7 +39,7 @@ public class OrderingSystem
         canvas.drawLine(0, 600, 900, 600);
         canvas.setFontSize(25);
         canvas.drawString("Total Price of the Order: £0.00", 10, 640);
-        
+
     }
     
     /**
@@ -46,7 +47,7 @@ public class OrderingSystem
      */
     public void startOrdering()
     {
-//        getOrderInputs(); 
+        choosePizza(); 
         pizzas.add(new Pizza(canvas,0,0));
         for(Pizza p : pizzas){
             p.displayPizza();
@@ -66,9 +67,11 @@ public class OrderingSystem
         
     }
     
-    public void getOrderInputs(){
-        KeyboardInput keyboardInput = new KeyboardInput(); 
-        keyboardInput.getInputString();
+    public void choosePizza(){
+//        String size = pizzaInputs.enterSize();
+//        String crust = pizzaInputs.enterCrust();
+//        boolean changeBase = pizzaInputs.changeBase();
+        
     }
-    
+   
 }

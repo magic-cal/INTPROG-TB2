@@ -1,8 +1,6 @@
 package pizzaorderingsystemnetbeans;
 
 import java.awt.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Class to represent a single pizza.
@@ -36,16 +34,17 @@ public class Pizza {
      */
     public void displayPizza() {
         drawPizza();
-//        drawMushroom();
+        drawMushroom();
         drawTuna();
-         //        drawTopLine();
-//        drawBottomLine();
+        drawTopLine();
+        drawBottomLine();
+
+
         try {
-           
     Thread.sleep(10000);
     System.exit(0);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(Pizza.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            System.out.println("Error");
         }
 
     }
@@ -117,5 +116,10 @@ public class Pizza {
             canvas.fillTriangle(x+15-i/2, y+15-i, x-15+i/2, y+15-i, x, y-15);
     }
 }
+    
+    public double getPrice(){
+        
+        return 2.2;
+    }
     
 }
