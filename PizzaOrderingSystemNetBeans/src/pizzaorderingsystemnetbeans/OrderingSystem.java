@@ -1,21 +1,24 @@
 package pizzaorderingsystemnetbeans;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 /**
  * Class to manage the pizza order.
- * @author yourStudentNumber
+ * @author 825573
  */
 public class OrderingSystem 
 {
     private Canvas canvas;
+    protected ArrayList<Pizza> pizzas = new ArrayList();
     
     /**
      * Constructor for the ordering system.
      */
     public OrderingSystem()
     {
-        canvas = new Canvas("Pizza Ordering", 900, 650);         
+        canvas = new Canvas("Pizza Ordering", 900, 650);        
+        
     }
     
     /**
@@ -43,16 +46,29 @@ public class OrderingSystem
      */
     public void startOrdering()
     {
-         
-        Pizza pizza1 = new Pizza(canvas, 0, 0);
-        pizza1.displayPizza();
+//        getOrderInputs(); 
+        pizzas.add(new Pizza(canvas,0,0));
+        for(Pizza p : pizzas){
+            p.displayPizza();
+        }
         
-        Pizza pizza2 = new Pizza(canvas, 300, 0);
-        pizza2.displayPizza();
+//        Pizza pizza1 = new Pizza(canvas, 0, 0);
+//        pizza1.displayPizza();
+//        
+//        Pizza pizza2 = new Pizza(canvas, 300, 0);
+//        pizza2.displayPizza();
+//        
+//        Pizza pizza3 = new Pizza(canvas, 600, 0);
+//        pizza3.displayPizza();
+//        
+//        Pizza pizza4 = new Pizza(canvas, 0, 300);
+//        pizza4.displayPizza();
         
-        Pizza pizza3 = new Pizza(canvas, 600, 0);
-        pizza3.displayPizza();
-        
+    }
+    
+    public void getOrderInputs(){
+        KeyboardInput keyboardInput = new KeyboardInput(); 
+        keyboardInput.getInputString();
     }
     
 }
