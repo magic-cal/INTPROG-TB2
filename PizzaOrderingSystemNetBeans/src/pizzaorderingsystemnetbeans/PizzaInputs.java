@@ -5,6 +5,7 @@
  */
 package pizzaorderingsystemnetbeans;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 
@@ -66,19 +67,40 @@ public class PizzaInputs {
     }
     
     
-     public int enterTopping(){
-        int enteredTopping;
-        int[] toppings = {0,1,2};
+     public String[] enterToppings(){
+        String[] toppings = {null,null};
+        int enteredToppingNo;
+        Integer[] noToppings = {0,1,2};
         do{
         System.out.println("Valid toppings numbers are: ");
-        for(int topping: toppings){
+        for(int topping: noToppings){
+            System.out.println(topping);
+        }
+        System.out.println("Please enter a valid topping number: ");
+        enteredToppingNo = inputs.getInputInteger();
+        }while(!(Arrays.asList(noToppings).contains(enteredToppingNo)));
+            for (int i = 0; i < enteredToppingNo; i++) {
+                toppings[i] = enterTopping();
+             
+         }
+            return toppings;
+        
+    }
+     
+     private String enterTopping(){
+        String enteredTopping;
+        String[] toppings = {"tuna", "mushroom"};
+        do{
+        System.out.println("\n \nValid toppings are: ");
+        for(String topping: toppings){
             System.out.println(topping);
         }
         System.out.println("Please enter a valid topping: ");
-        enteredTopping = inputs.getInputInteger();
+        enteredTopping = inputs.getInputString();
         }while(!(Arrays.asList(toppings).contains(enteredTopping)));
             return enteredTopping;
         
     }
+     
     
 }

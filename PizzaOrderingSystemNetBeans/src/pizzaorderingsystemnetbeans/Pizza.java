@@ -26,6 +26,7 @@ public class Pizza {
         canvas = win;
         topLeftX = startX;
         topLeftY = startY;
+        System.out.println(topLeftX +" "+ topLeftY);
 
     }
 
@@ -34,18 +35,16 @@ public class Pizza {
      */
     public void displayPizza() {
         drawPizza();
-        drawMushroom();
-        drawTuna();
-        drawTopLine();
         drawBottomLine();
+        drawTopLine();
+        drawToppings();
 
-
-        try {
-    Thread.sleep(10000);
-    System.exit(0);
-        } catch (Exception ex) {
-            System.out.println("Error");
-        }
+//        try {
+//            Thread.sleep(10000);
+//            System.exit(0);
+//        } catch (Exception ex) {
+//            System.out.println("Error");
+//        }
 
     }
 
@@ -55,9 +54,16 @@ public class Pizza {
     private void drawPizza() {
         canvas.setForegroundColor(Color.YELLOW);
         canvas.fillCircle(topLeftX + 150, topLeftY + 150, 200);
+        if(1!=1){
+        canvas.setForegroundColor(Color.RED);
+        }else{
+        canvas.setForegroundColor(Color.ORANGE);
+        }
+        canvas.fillCircle(topLeftX + 150, topLeftY + 150, 175);
         
+
         canvas.setForegroundColor(Color.WHITE);
-        canvas.fillCircle(topLeftX + 150, topLeftY + 150, 150);
+        canvas.fillCircle(topLeftX + 150, topLeftY + 150, 155);
     }
 
     /**
@@ -92,9 +98,7 @@ public class Pizza {
         canvas.drawString(bottomLine, stringX, stringY);
     }
 
-    private void drawMushroom() {
-        int x = 150;
-        int y = 150;
+    private void drawMushroom(double x, double y) {
         canvas.setForegroundColor(Color.lightGray);
         canvas.fillRectangle(x - 4, y, 8, 15);
         canvas.fillSemiCircle(x - 13, y - 13, 26, 27, false, true);
@@ -102,24 +106,41 @@ public class Pizza {
         canvas.fillRectangle(x - 2, y, 4, 13);
         canvas.fillSemiCircle(x - 10, y - 10, 20, 20, false, true);
     }
-    
-    private void drawTuna(){
-        int x = 150;
-        int y = 150;
-        for (int i = 0; i <= 30; i+=6) {
-            if(i%12 != 0){
+
+    private void drawTuna(double x, double y) {
+
+        for (int i = 0; i <= 30; i += 6) {
+            if (i % 12 != 0) {
                 canvas.setForegroundColor(Color.PINK);
-            }else{
+            } else {
                 canvas.setForegroundColor(Color.RED);
             }
-           
-            canvas.fillTriangle(x+15-i/2, y+15-i, x-15+i/2, y+15-i, x, y-15);
+
+            canvas.fillTriangle(x + 15 - i / 2, y + 15 - i, x - 15 + i / 2, y + 15 - i, x, y - 15);
+        }
     }
-}
-    
-    public double getPrice(){
-        
+
+    private void drawToppings() {
+        double x = topLeftX + 110;
+        double y = topLeftY + 105;
+        for (int i = 0; i < 120; i += 40) {
+            for (int j = 0; j < 120; j += 40) {
+                if ((i + j) % 80 == 0) {
+//                    drawMushroom(x+j,y+i);
+                    drawTuna(x + j, y + i);
+                } else {
+//                    drawTuna(x + j, y + i);
+                    drawMushroom(x+j,y+i);
+                }
+
+            }
+        }
+
+    }
+
+    public double getPrice() {
+
         return 2.2;
     }
-    
+
 }

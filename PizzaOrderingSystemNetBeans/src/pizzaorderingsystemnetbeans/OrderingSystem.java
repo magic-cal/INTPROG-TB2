@@ -48,22 +48,22 @@ public class OrderingSystem
     public void startOrdering()
     {
         choosePizza(); 
-        pizzas.add(new Pizza(canvas,0,0));
-        for(Pizza p : pizzas){
-            p.displayPizza();
-        }
+//        pizzas.add(new Pizza(canvas,0,0));
+//        for(Pizza p : pizzas){
+//            p.displayPizza();
+//        }
         
-//        Pizza pizza1 = new Pizza(canvas, 0, 0);
-//        pizza1.displayPizza();
+        Pizza pizza1 = new Pizza(canvas, 0, 0);
+        pizza1.displayPizza();
+        
+        Pizza pizza2 = new Pizza(canvas, 300, 0);
+        pizza2.displayPizza();
+////        
+        Pizza pizza3 = new Pizza(canvas, 600, 0);
+        pizza3.displayPizza();
 //        
-//        Pizza pizza2 = new Pizza(canvas, 300, 0);
-//        pizza2.displayPizza();
-//        
-//        Pizza pizza3 = new Pizza(canvas, 600, 0);
-//        pizza3.displayPizza();
-//        
-//        Pizza pizza4 = new Pizza(canvas, 0, 300);
-//        pizza4.displayPizza();
+        Pizza pizza4 = new Pizza(canvas, 0, 300);
+        pizza4.displayPizza();
         
     }
     
@@ -71,7 +71,20 @@ public class OrderingSystem
 //        String size = pizzaInputs.enterSize();
 //        String crust = pizzaInputs.enterCrust();
 //        boolean changeBase = pizzaInputs.changeBase();
+          String [] toppings = pizzaInputs.enterToppings();
+              for (int i = 0; i < 2; i++) {
+                  if(toppings[i] == null){
+                      System.out.println("whop null");
+                  }else{
+                        System.out.println(toppings[i]);
+                  }
+           
+          }
+          
+        }
+         
+          
         
     }
    
-}
+
