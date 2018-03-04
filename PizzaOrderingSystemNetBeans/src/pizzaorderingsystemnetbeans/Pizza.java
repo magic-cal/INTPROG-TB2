@@ -26,7 +26,7 @@ public class Pizza {
         canvas = win;
         topLeftX = startX;
         topLeftY = startY;
-        System.out.println(topLeftX +" "+ topLeftY);
+        System.out.println(topLeftX + " " + topLeftY);
 
     }
 
@@ -45,7 +45,6 @@ public class Pizza {
 //        } catch (Exception ex) {
 //            System.out.println("Error");
 //        }
-
     }
 
     /**
@@ -54,13 +53,12 @@ public class Pizza {
     private void drawPizza() {
         canvas.setForegroundColor(Color.YELLOW);
         canvas.fillCircle(topLeftX + 150, topLeftY + 150, 200);
-        if(1!=1){
-        canvas.setForegroundColor(Color.RED);
-        }else{
-        canvas.setForegroundColor(Color.ORANGE);
+        if (1 != 1) {
+            canvas.setForegroundColor(Color.RED);
+        } else {
+            canvas.setForegroundColor(Color.ORANGE);
         }
         canvas.fillCircle(topLeftX + 150, topLeftY + 150, 175);
-        
 
         canvas.setForegroundColor(Color.WHITE);
         canvas.fillCircle(topLeftX + 150, topLeftY + 150, 155);
@@ -130,7 +128,7 @@ public class Pizza {
                     drawTuna(x + j, y + i);
                 } else {
 //                    drawTuna(x + j, y + i);
-                    drawMushroom(x+j,y+i);
+                    drawMushroom(x + j, y + i);
                 }
 
             }
