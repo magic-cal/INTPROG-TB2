@@ -26,6 +26,7 @@ public class OrderingSystem {
      * Method to draw the outline of the order screen.
      */
     public void drawOrderScreen() {
+        
         canvas.setForegroundColor(Color.BLACK);
         // vertical dividers
         canvas.drawLine(300, 0, 300, 600);
@@ -37,7 +38,8 @@ public class OrderingSystem {
         // total price line
         canvas.drawLine(0, 600, 900, 600);
         canvas.setFontSize(25);
-        canvas.drawString("Total Price of the Order: £0.00", 10, 640);
+        canvas.drawString("Total Price of the Order: £"+calculatePrice(0), 10, 640);
+        canvas.eraseString("Total Price of the Order: £"+calculatePrice(0), 10, 640);
 
     }
 
@@ -45,40 +47,73 @@ public class OrderingSystem {
      * Method to manage the ordering of the pizzas (once completed).
      */
     public void startOrdering() {
-        choosePizza();
-//        pizzas.add(new Pizza(canvas,0,0));
-//        for(Pizza p : pizzas){
-//            p.displayPizza();
-//        }
+        
+        pizzas.add(new Pizza(canvas, "medium", "deep pan", true, new String[]{"mushroom", "tuna"}));
+        pizzas.add(new Pizza(canvas, "large", "deep pan", true, new String[]{"tuna", null}));
+        pizzas.add(new Pizza(canvas, "large", "stuffed crust", false, new String[]{"tuna", "tuna"}));
+        pizzas.add(new Pizza(canvas, "medium", "deep pan", true, new String[]{"mushroom", "tuna"}));
+        pizzas.add(new Pizza(canvas, "small", "thin crust", false, new String[]{"tuna", "mushroom"}));
+        pizzas.add(new Pizza(canvas, "small", "thin crust", false, new String[]{"mushroom", "mushroom"}));
+        
+        System.out.println(calculatePrice(0));
 
-        Pizza pizza1 = new Pizza(canvas, 0, 0);
-        pizza1.displayPizza();
-
-        Pizza pizza2 = new Pizza(canvas, 300, 0);
-        pizza2.displayPizza();
-////        
-        Pizza pizza3 = new Pizza(canvas, 600, 0);
-        pizza3.displayPizza();
+//        do{
+//            pizzas.add(choosePizza());
+//            System.out.println(pizzas.size());
+//           } while(pizzas.size()<6&&pizzaInputs.Continue());
 //        
-        Pizza pizza4 = new Pizza(canvas, 0, 300);
-        pizza4.displayPizza();
 
-    }
-
-    public void choosePizza() {
-//        String size = pizzaInputs.enterSize();
-//        String crust = pizzaInputs.enterCrust();
-//        boolean changeBase = pizzaInputs.changeBase();
-        String[] toppings = pizzaInputs.enterToppings();
-        for (int i = 0; i < 2; i++) {
-            if (toppings[i] == null) {
-                System.out.println("whop null");
-            } else {
-                System.out.println(toppings[i]);
-            }
-
+//
+        for (Pizza p : pizzas) {
+//            p.displayPizza(0, 0);
+            p.printAll();
+            System.out.println(p.getPrice());
         }
 
+        displayPizzas(0);
+        updatePrice();
+
+    }
+//
+//        try {
+//            Thread.sleep(5000);
+//            System.exit(0);
+//        } catch (Exception ex) {
+//            System.out.println("Error");
+//        }
+
+    public void displayPizzas(int currentIndex) {
+        for (int i = 0; i <= 600 && currentIndex < pizzas.size(); i += 300) {
+            for (int j = 0; j <= 600 && currentIndex < pizzas.size(); j += 300, currentIndex++) {
+                pizzas.get(currentIndex).displayPizza(j, i);
+            }
+        }
+    }
+
+    public Pizza choosePizza() {
+        String size = pizzaInputs.enterSize();
+        String crust = pizzaInputs.enterCrust();
+        boolean changeSauce = pizzaInputs.changeSauce();
+        String[] toppings = pizzaInputs.enterToppings();
+        Pizza chosenPizza = new Pizza(canvas, size, crust, changeSauce, toppings);
+        return chosenPizza;
+    }
+    
+    private double calculatePrice(int index){
+        double totPrice=0;
+        
+        for (int i = index; i <= index+6 && index+i < pizzas.size(); i++) {
+            totPrice += pizzas.get(i).getPrice();
+        }
+        
+        return totPrice;
+    }
+    
+    private void updatePrice(){
+        canvas.setForegroundColor(Color.BLACK);
+        canvas.setFontSize(25);
+        canvas.eraseString("Total Price of the Order: £"+calculatePrice(0), 10, 640);
+        canvas.drawString("Total Price of the Order: £"+calculatePrice(0), 10, 640);
     }
 
 }

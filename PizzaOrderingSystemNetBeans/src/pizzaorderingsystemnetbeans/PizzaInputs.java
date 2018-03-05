@@ -24,7 +24,7 @@ public class PizzaInputs {
         String enteredSize;
         String[] sizes = {"small", "medium", "large"};
         do {
-            System.out.println("Valid sizes are: ");
+            System.out.println("\nValid sizes are: ");
             for (String size : sizes) {
                 System.out.println(size);
             }
@@ -39,7 +39,7 @@ public class PizzaInputs {
         String enteredCrust;
         String[] crusts = {"deep pan", "thin crust", "stuffed crust"};
         do {
-            System.out.println("Valid crusts are: ");
+            System.out.println("\nValid crusts are: ");
             for (String crust : crusts) {
                 System.out.println(crust);
             }
@@ -50,10 +50,10 @@ public class PizzaInputs {
 
     }
 
-    public boolean changeBase() {
+    public boolean changeSauce() {
         String enteredValue;
         do {
-            System.out.println("Please enter either : \"y\" to change base to BBQ or : \"n\" to keep tomato");
+            System.out.println("\nPlease enter either : \"y\" to change base to BBQ or : \"n\" to keep tomato");
 
             enteredValue = inputs.getInputString();
             System.out.println(enteredValue);
@@ -71,7 +71,7 @@ public class PizzaInputs {
         int enteredToppingNo;
         Integer[] noToppings = {0, 1, 2};
         do {
-            System.out.println("Valid toppings numbers are: ");
+            System.out.println("\nValid toppings numbers are: ");
             for (int topping : noToppings) {
                 System.out.println(topping);
             }
@@ -90,7 +90,7 @@ public class PizzaInputs {
         String enteredTopping;
         String[] toppings = {"tuna", "mushroom"};
         do {
-            System.out.println("\n \nValid toppings are: ");
+            System.out.println("\nValid toppings are: ");
             for (String topping : toppings) {
                 System.out.println(topping);
             }
@@ -99,6 +99,20 @@ public class PizzaInputs {
         } while (!(Arrays.asList(toppings).contains(enteredTopping)));
         return enteredTopping;
 
+    }
+    
+    public boolean Continue() {
+        String enteredValue;
+        do {
+            System.out.println("\nPlease enter \"y\" to enter another pizza or anything else to stop");
+            enteredValue = inputs.getInputString();
+        } while (!((enteredValue.equals("y")) || ((enteredValue.equals("n")))));
+        if (enteredValue.equals("y")) {
+            return true;
+        } else {
+            return false;
+
+        }
     }
 
 }
