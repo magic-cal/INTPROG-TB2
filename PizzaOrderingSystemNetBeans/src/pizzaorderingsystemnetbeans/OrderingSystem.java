@@ -38,8 +38,7 @@ public class OrderingSystem {
         // total price line
         canvas.drawLine(0, 600, 900, 600);
         canvas.setFontSize(25);
-        canvas.drawString("Total Price of the Order: £"+calculatePrice(0), 10, 640);
-        canvas.eraseString("Total Price of the Order: £"+calculatePrice(0), 10, 640);
+//        canvas.drawString("Total Price of the Order: £"+calculatePrice(0), 10, 640);
 
     }
 
@@ -52,8 +51,8 @@ public class OrderingSystem {
         pizzas.add(new Pizza(canvas, "large", "deep pan", true, new String[]{"tuna", null}));
         pizzas.add(new Pizza(canvas, "large", "stuffed crust", false, new String[]{"tuna", "tuna"}));
         pizzas.add(new Pizza(canvas, "medium", "deep pan", true, new String[]{"mushroom", "tuna"}));
-        pizzas.add(new Pizza(canvas, "small", "thin crust", false, new String[]{"tuna", "mushroom"}));
-        pizzas.add(new Pizza(canvas, "small", "thin crust", false, new String[]{"mushroom", "mushroom"}));
+//        pizzas.add(new Pizza(canvas, "small", "thin crust", false, new String[]{"tuna", "mushroom"}));
+//        pizzas.add(new Pizza(canvas, "small", "thin crust", false, new String[]{"mushroom", "mushroom"}));
         
         System.out.println(calculatePrice(0));
 
@@ -61,7 +60,7 @@ public class OrderingSystem {
 //            pizzas.add(choosePizza());
 //            System.out.println(pizzas.size());
 //           } while(pizzas.size()<6&&pizzaInputs.Continue());
-//        
+////        
 
 //
         for (Pizza p : pizzas) {
