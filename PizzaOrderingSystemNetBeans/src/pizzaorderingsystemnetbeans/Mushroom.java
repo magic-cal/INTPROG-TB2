@@ -16,6 +16,5 @@ public class Mushroom extends Topping {
         super(canvas,x,y);
         
         
-        
     }
 }

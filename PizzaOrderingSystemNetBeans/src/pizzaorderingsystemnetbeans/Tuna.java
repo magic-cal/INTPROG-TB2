@@ -9,6 +9,11 @@ package pizzaorderingsystemnetbeans;
  *
  * @author up825573
  */
-public class Tuna {
-    
+public class Tuna extends Topping {
+
+    public Tuna(Canvas canvas, int x, int y) {
+        super(canvas, x, y);
+
+    }
+
 }
