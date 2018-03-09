@@ -47,19 +47,19 @@ public class OrderingSystem {
      */
     public void startOrdering() {
         
-        pizzas.add(new Pizza(canvas, "medium", "deep pan", true, new String[]{"mushroom", "tuna"}));
-        pizzas.add(new Pizza(canvas, "large", "deep pan", true, new String[]{"tuna", null}));
-        pizzas.add(new Pizza(canvas, "large", "stuffed crust", false, new String[]{"tuna", "tuna"}));
-        pizzas.add(new Pizza(canvas, "medium", "deep pan", true, new String[]{"mushroom", "tuna"}));
+//        pizzas.add(new Pizza(canvas, "medium", "deep pan", true, new String[]{"mushroom", "tuna"}));
+//        pizzas.add(new Pizza(canvas, "large", "deep pan", true, new String[]{"tuna", null}));
+//        pizzas.add(new Pizza(canvas, "large", "stuffed crust", false, new String[]{"tuna", "tuna"}));
+//        pizzas.add(new Pizza(canvas, "medium", "deep pan", true, new String[]{"mushroom", "tuna"}));
 //        pizzas.add(new Pizza(canvas, "small", "thin crust", false, new String[]{"tuna", "mushroom"}));
 //        pizzas.add(new Pizza(canvas, "small", "thin crust", false, new String[]{"mushroom", "mushroom"}));
         
         System.out.println(calculatePrice(0));
 
-//        do{
-//            pizzas.add(choosePizza());
-//            System.out.println(pizzas.size());
-//           } while(pizzas.size()<6&&pizzaInputs.Continue());
+        do{
+            pizzas.add(choosePizza());
+            System.out.println(pizzas.size());
+           } while(pizzas.size()<6&&pizzaInputs.Continue());
 ////        
 
 //
