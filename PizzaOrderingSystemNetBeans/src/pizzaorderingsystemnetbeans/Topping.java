@@ -9,17 +9,25 @@ package pizzaorderingsystemnetbeans;
  *
  * @author up825573
  */
+
+import java.awt.Color;
+
 public class Topping {
     
-    public Topping(Canvas canvas,int x, int y ){
-        
+    protected Canvas canvas;
+    protected double price;
+    protected Color primaryColour;
+    protected Color secondaryColour;
+    
+    public Topping(Canvas pCanvas,double pPrice,Color pPrimaryColour,Color pSecondaryColour){
+        canvas = pCanvas;
         
         
     }
     
-    public void drawTopping(){
+    public void printHi(){
         
-        
+        System.out.println("This is super");
     }
     
     

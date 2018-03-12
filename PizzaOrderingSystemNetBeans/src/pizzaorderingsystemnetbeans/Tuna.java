@@ -5,15 +5,35 @@
  */
 package pizzaorderingsystemnetbeans;
 
+import java.awt.Color;
+
 /**
  *
  * @author up825573
  */
 public class Tuna extends Topping {
-
-    public Tuna(Canvas canvas, int x, int y) {
-        super(canvas, x, y);
+    
+//        Color primaryColour= Color.PINK;
+//        Color secondaryColour= Color.RED;
+        
+   
+    public Tuna(Canvas pCanvas) {
+        super(pCanvas,0.04,Color.GRAY,Color.LIGHT_GRAY);
+        
+        
 
     }
+    public void drawTuna(double x, double y) {
 
+        for (int i = 0; i <= 30; i += 6) {
+            if (i % 12 != 0) {
+                canvas.setForegroundColor(secondaryColour);
+            } else {
+                canvas.setForegroundColor(Color.RED);
+            }
+            canvas.fillTriangle(x+15 - i/2, y+15 - i,x -15+i/2, y + 15 - i, x, y - 15);
+        }
+    }
+    
+    
 }

@@ -19,11 +19,13 @@ public class Pizza {
     todo Change type. 
      */
 //    TODO
-    String size;
-    String crust;
-    boolean bbqSauce;
-    String[] toppings;
-    double area = 0;
+    private String size;
+    private String crust;
+    private boolean bbqSauce;
+    private String[] toppings;
+    private double area = 0;
+    private Tuna tuna;
+    private Mushroom mushroom;
 
     /**
      * Constructor for pizza.
@@ -47,6 +49,8 @@ public class Pizza {
             System.out.println("Pizza Size Error");
         }
         area = Math.round(Math.PI * Math.pow(radius, 2) * 100d) / 100d;
+         tuna = new Tuna(canvas);
+         mushroom = new Mushroom(canvas);
 
     }
 
@@ -126,14 +130,7 @@ public class Pizza {
         canvas.drawString(bottomLine, stringX, stringY);
     }
 
-    private void drawMushroom(double x, double y) {
-        canvas.setForegroundColor(Color.lightGray);
-        canvas.fillRectangle(x - 4, y, 8, 15);
-        canvas.fillSemiCircle(x - 13, y - 13, 26, 27, false, true);
-        canvas.setForegroundColor(Color.GRAY);
-        canvas.fillRectangle(x - 2, y, 4, 13);
-        canvas.fillSemiCircle(x - 10, y - 10, 20, 20, false, true);
-    }
+    
 
     private void drawTuna(double x, double y) {
 
@@ -145,6 +142,15 @@ public class Pizza {
             }
             canvas.fillTriangle(x + 15 - i / 2, y + 15 - i, x - 15 + i / 2, y + 15 - i, x, y - 15);
         }
+    }
+    
+    public void drawMushroom(double x, double y) {
+        canvas.setForegroundColor(Color.lightGray);
+        canvas.fillRectangle(x - 4, y, 8, 15);
+        canvas.fillSemiCircle(x - 13, y - 13, 26, 27, false, true);
+        canvas.setForegroundColor(Color.GRAY);
+        canvas.fillRectangle(x - 2, y, 4, 13);
+        canvas.fillSemiCircle(x - 10, y - 10, 20, 20, false, true);
     }
 
     private void drawToppings() {
@@ -166,9 +172,9 @@ public class Pizza {
     private void drawTopping(String topping, double x, double y) {
         if (topping != null) {
             if (topping.equals("tuna")) {
-                drawTuna(x, y);
+                tuna.drawTuna(x, y);
             } else if (topping.equals("mushroom")) {
-                drawMushroom(x, y);
+                mushroom.drawMushroom(x, y);
             } else {
                 System.out.println("Error: invalid topping");
             }
