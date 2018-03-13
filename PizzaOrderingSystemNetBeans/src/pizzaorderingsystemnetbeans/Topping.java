@@ -21,14 +21,17 @@ public class Topping {
     
     public Topping(Canvas pCanvas,double pPrice,Color pPrimaryColour,Color pSecondaryColour){
         canvas = pCanvas;
+        price=pPrice;
+        primaryColour=pPrimaryColour;
+        secondaryColour=pSecondaryColour;
         
         
     }
     
-    public void printHi(){
-        
-        System.out.println("This is super");
+    public double getPrice(){
+        return price;
     }
+    
     
     
 }

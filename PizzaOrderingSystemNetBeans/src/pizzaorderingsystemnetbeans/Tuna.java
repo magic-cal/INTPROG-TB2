@@ -18,18 +18,17 @@ public class Tuna extends Topping {
         
    
     public Tuna(Canvas pCanvas) {
-        super(pCanvas,0.04,Color.GRAY,Color.LIGHT_GRAY);
+        super(pCanvas,0.04,Color.RED,Color.PINK);
         
         
 
     }
     public void drawTuna(double x, double y) {
-
         for (int i = 0; i <= 30; i += 6) {
             if (i % 12 != 0) {
                 canvas.setForegroundColor(secondaryColour);
             } else {
-                canvas.setForegroundColor(Color.RED);
+                canvas.setForegroundColor(primaryColour);
             }
             canvas.fillTriangle(x+15 - i/2, y+15 - i,x -15+i/2, y + 15 - i, x, y - 15);
         }

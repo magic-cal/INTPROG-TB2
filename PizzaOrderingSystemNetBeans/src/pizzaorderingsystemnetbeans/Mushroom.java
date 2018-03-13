@@ -21,10 +21,10 @@ public class Mushroom extends Topping {
     }
     
     public void drawMushroom(double x, double y) {
-        canvas.setForegroundColor(Color.lightGray);
+        canvas.setForegroundColor(secondaryColour);
         canvas.fillRectangle(x - 4, y, 8, 15);
         canvas.fillSemiCircle(x - 13, y - 13, 26, 27, false, true);
-        canvas.setForegroundColor(Color.GRAY);
+        canvas.setForegroundColor(primaryColour);
         canvas.fillRectangle(x - 2, y, 4, 13);
         canvas.fillSemiCircle(x - 10, y - 10, 20, 20, false, true);
     }
