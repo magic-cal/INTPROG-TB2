@@ -20,8 +20,6 @@ public class Tuna extends Topping {
     public Tuna(Canvas pCanvas) {
         super(pCanvas,0.04,Color.RED,Color.PINK);
         
-        
-
     }
     public void drawTuna(double x, double y) {
         for (int i = 0; i <= 30; i += 6) {

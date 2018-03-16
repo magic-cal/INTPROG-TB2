@@ -16,7 +16,6 @@ public class Mushroom extends Topping {
 //    Canvas canvas;
     public Mushroom(Canvas pCanvas){
         super(pCanvas,0.04,Color.GRAY,Color.LIGHT_GRAY);
-        
 //        canvas = pCanvas;
     }
     
@@ -29,8 +28,4 @@ public class Mushroom extends Topping {
         canvas.fillSemiCircle(x - 10, y - 10, 20, 20, false, true);
     }
     
-    public String outputHi(){     
-        System.out.println("HI");
-        return "hi";
-    }
 }

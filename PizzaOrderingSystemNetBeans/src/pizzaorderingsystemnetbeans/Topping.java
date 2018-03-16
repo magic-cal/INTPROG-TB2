@@ -21,13 +21,11 @@ public class Topping {
     
     public Topping(Canvas pCanvas,double pPrice,Color pPrimaryColour,Color pSecondaryColour){
         canvas = pCanvas;
-        price=pPrice;
-        primaryColour=pPrimaryColour;
-        secondaryColour=pSecondaryColour;
-        
-        
+        price = pPrice;
+        primaryColour = pPrimaryColour;
+        secondaryColour = pSecondaryColour;
     }
-    
+
     public double getPrice(){
         return price;
     }

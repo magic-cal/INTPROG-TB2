@@ -79,14 +79,14 @@ public class PizzaInputs {
             enteredToppingNo = inputs.getInputInteger();
         } while (!(Arrays.asList(noToppings).contains(enteredToppingNo)));
         for (int i = 0; i < enteredToppingNo; i++) {
-            toppings[i] = enterTopping();
+            toppings[i] = enterTopping(i+1);
 
         }
         return toppings;
 
     }
 
-    private String enterTopping() {
+    private String enterTopping(int toppingNo) {
         String enteredTopping;
         String[] toppings = {"tuna", "mushroom"};
         do {
@@ -94,7 +94,7 @@ public class PizzaInputs {
             for (String topping : toppings) {
                 System.out.println(topping);
             }
-            System.out.println("Please enter a valid topping: ");
+            System.out.println("Please valid topping no: "+ toppingNo);
             enteredTopping = inputs.getInputString();
         } while (!(Arrays.asList(toppings).contains(enteredTopping)));
         return enteredTopping;
@@ -104,7 +104,7 @@ public class PizzaInputs {
     public boolean Continue() {
         String enteredValue;
         do {
-            System.out.println("\nPlease enter \"y\" to enter another pizza or anything else to stop");
+            System.out.println("\nPlease enter \"y\" to enter another pizza or : \"n\" to stop");
             enteredValue = inputs.getInputString();
         } while (!((enteredValue.equals("y")) || ((enteredValue.equals("n")))));
         if (enteredValue.equals("y")) {
@@ -114,5 +114,22 @@ public class PizzaInputs {
 
         }
     }
+    
+    
+    //todo//
+    public String getInput(String[] toppings, String itemToChoose){
+        String enteredTopping;
+       do {
+            System.out.println("Please valid "+itemToChoose+"s are:");
+            for (String topping : toppings) {
+                System.out.println(topping);
+            }
+            System.out.println("Please valid "+itemToChoose+"s are:");
+            enteredTopping = inputs.getInputString();
+        } while (!(Arrays.asList(toppings).contains(enteredTopping)));
+        return enteredTopping;
+    }
+            
+            
 
 }
