@@ -57,7 +57,7 @@ public class OrderingSystem {
 //        System.out.println(calculatePrice(0));
 
         do{
-            pizzas.add(choosePizzaGen());
+            pizzas.add(choosePizza());
             System.out.println(pizzas.size());
         }while(pizzas.size()<6&&pizzaInputs.Continue());
 ////        
@@ -99,15 +99,15 @@ public class OrderingSystem {
         return chosenPizza;
     }
     
-    public Pizza choosePizzaGen() {
-        String[] toppings1 = {"tuna", "mushroom"};
-        String size = pizzaInputs.getInput(new String[]{"small","medd","largo"},"Size");
-        String crust = pizzaInputs.getInput(new String[]{"deep pan","thin crust","stuffed crust"},"Crust");
-        boolean changeSauce = pizzaInputs.getInput(new String[]{"tomato","bbq",},"Size");
-        String[] toppings = pizzaInputs.enterToppings();
-        Pizza chosenPizza = new Pizza(canvas, size, crust, changeSauce, toppings);
-        return chosenPizza;
-    }
+//    public Pizza choosePizzaGen() {
+//        String[] toppings1 = {"tuna", "mushroom"};
+//        String size = pizzaInputs.getInput(new String[]{"small","medd","largo"},"Size");
+//        String crust = pizzaInputs.getInput(new String[]{"deep pan","thin crust","stuffed crust"},"Crust");
+//        boolean changeSauce = pizzaInputs.getInput(new String[]{"tomato","bbq",},"Size");
+//        String[] toppings = pizzaInputs.enterToppings();
+//        Pizza chosenPizza = new Pizza(canvas, size, crust, changeSauce, toppings);
+//        return chosenPizza;
+//    }
     
     private double calculatePrice(int index){
         double totPrice=0;

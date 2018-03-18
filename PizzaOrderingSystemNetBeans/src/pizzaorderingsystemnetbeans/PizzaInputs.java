@@ -163,18 +163,18 @@ public class PizzaInputs {
     }
             
         
-         public String getInput(enum[] validItems, String itemToChoose){
-        String enteredItem;
-       do {
-            System.out.println("Please valid "+itemToChoose+"s are:");
-            for (String topping : validItems) {
-                System.out.println(topping);
-            }
-            System.out.println("Please valid "+itemToChoose+"s are:");
-            enteredItem = inputs.getInputString();
-        } while (!(Arrays.asList(validItems).contains(enteredItem)));
-        return enteredItem;
-    }
-            
+//         public String getInput(enum[] validItems, String itemToChoose){
+//        String enteredItem;
+//       do {
+//            System.out.println("Please valid "+itemToChoose+"s are:");
+//            for (String topping : validItems) {
+//                System.out.println(topping);
+//            }
+//            System.out.println("Please valid "+itemToChoose+"s are:");
+//            enteredItem = inputs.getInputString();
+//        } while (!(Arrays.asList(validItems).contains(enteredItem)));
+//        return enteredItem;
+//    }
+//            
 
 }
