@@ -49,6 +49,7 @@ public class Pizza {
             System.out.println("Pizza Size Error");
         }
         area = Math.round(Math.PI * Math.pow(radius, 2) * 100d) / 100d;
+        System.out.println("area :"+area);
          tuna = new Tuna(canvas);
          mushroom = new Mushroom(canvas);
 
@@ -215,4 +216,21 @@ public class Pizza {
         System.out.println(size + crust + bbqSauce + toppings.toString());
 
     }
+    
+    public void setSize(String newSize){
+        size = newSize;
+    }
+    
+    public void setCrust(String newCrust){
+        crust = newCrust;
+    }
+    
+    public void setBbq(boolean newSauce){
+        bbqSauce = newSauce;
+    }
+    
+    public void setTopping(String[] newToppings){
+        toppings = newToppings;
+    }
+    
 }

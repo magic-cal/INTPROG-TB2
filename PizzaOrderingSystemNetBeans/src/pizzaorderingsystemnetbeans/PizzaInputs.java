@@ -117,17 +117,17 @@ public class PizzaInputs {
     
     
     //todo//
-    public String getInput(String[] toppings, String itemToChoose){
-        String enteredTopping;
+    public String getInput(String[] validOptions, String itemToChoose){
+        String enteredValue;
        do {
-            System.out.println("Please valid "+itemToChoose+"s are:");
-            for (String topping : toppings) {
-                System.out.println(topping);
+            System.out.println("valid "+itemToChoose+"s are:");
+            for (String option : validOptions) {
+                System.out.println(option);
             }
             System.out.println("Please valid "+itemToChoose+"s are:");
-            enteredTopping = inputs.getInputString();
-        } while (!(Arrays.asList(toppings).contains(enteredTopping)));
-        return enteredTopping;
+            enteredValue = inputs.getInputString();
+        } while (!(Arrays.asList(validOptions).contains(enteredValue)));
+        return enteredValue;
     }
     
 //    public String getInput(PizzaOption[] toppings, String itemToChoose){

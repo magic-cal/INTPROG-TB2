@@ -30,7 +30,5 @@ public class Tuna extends Topping {
             }
             canvas.fillTriangle(x+15 - i/2, y+15 - i,x -15+i/2, y + 15 - i, x, y - 15);
         }
-    }
-    
-    
+    }    
 }

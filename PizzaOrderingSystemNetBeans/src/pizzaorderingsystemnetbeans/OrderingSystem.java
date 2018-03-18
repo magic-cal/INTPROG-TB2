@@ -52,7 +52,7 @@ public class OrderingSystem {
         pizzas.add(new Pizza(canvas, "large", "deep pan", true, new String[]{"tuna", null}));
         pizzas.add(new Pizza(canvas, "large", "stuffed crust", false, new String[]{"tuna", "tuna"}));
         pizzas.add(new Pizza(canvas, "medium", "deep pan", true, new String[]{"mushroom", "tuna"}));
-//        pizzas.add(new Pizza(canvas, "small", "thin crust", false, new String[]{"tuna", "mushroom"}));
+        pizzas.add(new Pizza(canvas, "small", "thin crust", false, new String[]{"tuna", "mushroom"}));
 //        pizzas.add(new Pizza(canvas, "small", "thin crust", false, new String[]{"mushroom", "mushroom"}));
 //        pizzas.add(new Pizza(canvas, "small", "thin crust", false, new String[]{"mushroom", "mushroom"}));
 //        pizzas.add(new Pizza(canvas, "medium", "deep pan", true, new String[]{"mushroom", "tuna"}));
@@ -128,6 +128,9 @@ try {
         
     }
     
+    private void changeOrder(){
+        
+    }
     private void changeScreen(int newIndex){
         if(newIndex%6 == 0 && pizzas.size()>= newIndex){
             currentIndex = newIndex;
