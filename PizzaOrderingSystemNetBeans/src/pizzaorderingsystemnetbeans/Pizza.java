@@ -1,8 +1,6 @@
 package pizzaorderingsystemnetbeans;
 
 import java.awt.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Class to represent a single pizza.
@@ -98,7 +96,7 @@ public class Pizza {
      */
     private void drawTopLine() {
         String topLine = "Pizza (" + size + ")";
-
+        
         double stringX = topLeftX + 10;
         double stringY = topLeftY + 25;
         System.out.println("top " + topLeftY);
@@ -119,7 +117,6 @@ public class Pizza {
         if (bbqSauce) {
             sauce = "BBQ Sauce";
         }
-
         String bottomLine = "Crust: " + crust + ", " + sauce;
 
         double stringX = topLeftX + 10;

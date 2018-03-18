@@ -117,19 +117,64 @@ public class PizzaInputs {
     
     
     //todo//
-    public String getInput(String[] toppings, String itemToChoose){
-        String enteredTopping;
+    public String getInput(String[] validItems, String itemToChoose){
+        String enteredItem;
        do {
             System.out.println("Please valid "+itemToChoose+"s are:");
-            for (String topping : toppings) {
+            for (String topping : validItems) {
                 System.out.println(topping);
             }
             System.out.println("Please valid "+itemToChoose+"s are:");
-            enteredTopping = inputs.getInputString();
-        } while (!(Arrays.asList(toppings).contains(enteredTopping)));
-        return enteredTopping;
+            enteredItem = inputs.getInputString();
+        } while (!(Arrays.asList(validItems).contains(enteredItem)));
+        return enteredItem;
     }
             
+    
+    
+    public int getInput(Integer[] validItems, String itemToChoose){
+        int enteredItem;
+       do {
+            System.out.println("Please valid "+itemToChoose+"s are:");
+            for (int topping : validItems) {
+                System.out.println(topping);
+            }
+            System.out.println("Please valid "+itemToChoose+"s are:");
+            enteredItem = inputs.getInputInteger();
+        } while (!(Arrays.asList(validItems).equals(enteredItem)));
+        return enteredItem;
+    }
+    
+        public boolean getInput(String itemToChoose, String[] validItems){
+        String enteredItem;
+       do {
+            System.out.println("Please valid "+itemToChoose+"s are:");
+            for (String topping : validItems) {
+                System.out.println(topping);
+            }
+            System.out.println("Please valid "+itemToChoose+"s are:");
+            enteredItem = inputs.getInputString();
+        } while (!(Arrays.asList(validItems).contains(enteredItem)));
+        if(enteredItem.equals(validItems[0])){
+            return true;
+        }else{
+            return false;
+        }
+    }
+            
+        
+         public String getInput(enum[] validItems, String itemToChoose){
+        String enteredItem;
+       do {
+            System.out.println("Please valid "+itemToChoose+"s are:");
+            for (String topping : validItems) {
+                System.out.println(topping);
+            }
+            System.out.println("Please valid "+itemToChoose+"s are:");
+            enteredItem = inputs.getInputString();
+        } while (!(Arrays.asList(validItems).contains(enteredItem)));
+        return enteredItem;
+    }
             
 
 }
