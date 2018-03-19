@@ -52,8 +52,8 @@ public class OrderingSystem {
      */
     public void startOrdering() {
 
-        pizzas.add(new Pizza(canvas, PizzaOption.MEDIUM, PizzaOption.THINCRUST, PizzaOption.BBQ, new Topping[]{availableToppings[2],availableToppings[1]}));
-        pizzas.add(new Pizza(canvas, PizzaOption.MEDIUM, PizzaOption.THINCRUST, PizzaOption.TOMATO, new Topping[]{availableToppings[2],availableToppings[2]}));
+        pizzas.add(new Pizza(canvas, PizzaOption.LARGE, PizzaOption.THINCRUST, PizzaOption.TOMATO, new Topping[]{availableToppings[1],availableToppings[1]}));
+//        pizzas.add(new Pizza(canvas, PizzaOption.MEDIUM, PizzaOption.DEEPPAN, PizzaOption.BBQ, new Topping[]{availableToppings[1],availableToppings[0]}));
 //        pizzas.add(new Pizza(canvas, "large", "deep pan", true,  new Topping[]{availableToppings[0],availableToppings[0]}));
 //        pizzas.add(new Pizza(canvas, "large", "stuffed crust", false,  new Topping[]{availableToppings[0],availableToppings[0]}));
 //        pizzas.add(new Pizza(canvas, "medium", "deep pan", true,  new Topping[]{availableToppings[0],availableToppings[0]}));
