@@ -14,13 +14,12 @@ import java.awt.Color;
 
 public class Topping {
     
-    protected Canvas canvas;
     protected double price;
     protected Color primaryColour;
     protected Color secondaryColour;
     
-    public Topping(Canvas pCanvas,double pPrice,Color pPrimaryColour,Color pSecondaryColour){
-        canvas = pCanvas;
+    public Topping(double pPrice,Color pPrimaryColour,Color pSecondaryColour){
+
         price = pPrice;
         primaryColour = pPrimaryColour;
         secondaryColour = pSecondaryColour;
@@ -29,7 +28,9 @@ public class Topping {
     public double getPrice(){
         return price;
     }
-    
+     public void draw(double x, double y,Canvas canvas) {
+        System.out.println("Error, Nothing to draw");
+    }
     
     
 }

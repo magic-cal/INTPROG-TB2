@@ -16,7 +16,7 @@ public class OrderingSystem {
     private ArrayList<Pizza> pizzas = new ArrayList();
     int currentIndex = 0;
     private PizzaOption[] options;
-    private Topping[] availableToppings = {new Tuna(canvas), new Mushroom(canvas)};
+    private Topping[] availableToppings = {new Tuna(), new Mushroom(),null};
 
 //    PizzaOption options  = PizzaOption;
     /**
@@ -52,11 +52,12 @@ public class OrderingSystem {
      */
     public void startOrdering() {
 
-        pizzas.add(new Pizza(canvas, "medium", "deep pan", true, new String[]{"mushroom", "tuna"}));
-        pizzas.add(new Pizza(canvas, "large", "deep pan", true, new String[]{"tuna", null}));
-        pizzas.add(new Pizza(canvas, "large", "stuffed crust", false, new String[]{"tuna", "tuna"}));
-        pizzas.add(new Pizza(canvas, "medium", "deep pan", true, new String[]{"mushroom", "tuna"}));
-        pizzas.add(new Pizza(canvas, "small", "thin crust", false, new String[]{"tuna", "mushroom"}));
+        pizzas.add(new Pizza(canvas, PizzaOption.MEDIUM, PizzaOption.THINCRUST, PizzaOption.BBQ, new Topping[]{availableToppings[2],availableToppings[1]}));
+        pizzas.add(new Pizza(canvas, PizzaOption.MEDIUM, PizzaOption.THINCRUST, PizzaOption.TOMATO, new Topping[]{availableToppings[2],availableToppings[2]}));
+//        pizzas.add(new Pizza(canvas, "large", "deep pan", true,  new Topping[]{availableToppings[0],availableToppings[0]}));
+//        pizzas.add(new Pizza(canvas, "large", "stuffed crust", false,  new Topping[]{availableToppings[0],availableToppings[0]}));
+//        pizzas.add(new Pizza(canvas, "medium", "deep pan", true,  new Topping[]{availableToppings[0],availableToppings[0]}));
+//        pizzas.add(new Pizza(canvas, "small", "thin crust", false,  new Topping[]{availableToppings[0],availableToppings[0]}));
 //        pizzas.add(new Pizza(canvas, "small", "thin crust", false, new String[]{"mushroom", "mushroom"}));
 //        pizzas.add(new Pizza(canvas, "small", "thin crust", false, new String[]{"mushroom", "mushroom"}));
 //        pizzas.add(new Pizza(canvas, "medium", "deep pan", true, new String[]{"mushroom", "tuna"}));
@@ -86,7 +87,7 @@ public class OrderingSystem {
 
     public void displayPizzas(int currentScreen) {
         for (int i = 0; i < 600 && currentScreen < pizzas.size(); i += 300) {
-            for (int j = 0; j <= 600 && currentScreen < pizzas.size(); j += 300, currentScreen++) {
+            for (int j = 0; j <= 600 && currentScreen < pizzas.size(); j += 300, currentScreen++) { 
                 pizzas.get(currentScreen).displayPizza(j, i);
             }
         }
@@ -127,7 +128,7 @@ public class OrderingSystem {
     private void updatePrice(int currentScreen) {
         canvas.setForegroundColor(Color.BLACK);
         canvas.setFontSize(25);
-        canvas.drawString("Total Price of the Order: £" + calculatePrice(currentScreen), 10, 640);
+        canvas.drawString("Total Price of the Order: £" + String.format( "%.2f",calculatePrice(currentScreen)), 10, 640);
     }
 
     private void updateOrderScreen() {

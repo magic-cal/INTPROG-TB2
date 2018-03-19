@@ -15,13 +15,13 @@ public class Tuna extends Topping {
     
 //        Color primaryColour= Color.PINK;
 //        Color secondaryColour= Color.RED;
-        
-   
-    public Tuna(Canvas pCanvas) {
-        super(pCanvas,0.04,Color.RED,Color.PINK);
-        
+
+    public Tuna() {
+        super(0.08,Color.RED,Color.PINK);
+
     }
-    public void drawTuna(double x, double y) {
+
+    public void draw(double x, double y,Canvas canvas) {
         for (int i = 0; i <= 30; i += 6) {
             if (i % 12 != 0) {
                 canvas.setForegroundColor(secondaryColour);

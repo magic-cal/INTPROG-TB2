@@ -19,10 +19,10 @@ public class Pizza {
     todo Change type. 
      */
 //    TODO
-    private String size;
-    private String crust;
-    private boolean bbqSauce;
-    private String[] toppings;
+    private PizzaOption size;
+    private PizzaOption crust;
+    private PizzaOption sauce;
+    private Topping[] toppings;
     private double area;
     private Tuna tuna;
     private Mushroom mushroom;
@@ -32,23 +32,15 @@ public class Pizza {
      *
      * @param win the window to draw the pizza on
      */
-    public Pizza(Canvas win, String pizzaSize, String pizzaCrust, boolean pizzaSauce, String[] pizzaToppings) {
+    public Pizza(Canvas win, PizzaOption pizzaSize, PizzaOption pizzaCrust, PizzaOption pizzaSauce, Topping[] pizzaToppings) {
         canvas = win;
         size = pizzaSize;
         crust = pizzaCrust;
-        bbqSauce = pizzaSauce;
+        sauce = pizzaSauce;
         toppings = pizzaToppings;
-        if (size.equals("small")) {
-            area = 78.54;
-        } else if (size.equals("medium")) {
-            area = 113.10;
-        } else if (size.equals("large")) {
-            area = 153.94;
-        } else {
-            System.out.println("Pizza Size Error");
-        }
-         tuna = new Tuna(canvas);
-         mushroom = new Mushroom(canvas);
+
+        tuna = new Tuna();
+        mushroom = new Mushroom();
 
     }
 
@@ -78,7 +70,7 @@ public class Pizza {
     private void drawPizza() {
         canvas.setForegroundColor(Color.YELLOW);
         canvas.fillCircle(topLeftX + 150, topLeftY + 150, 200);
-        if (bbqSauce) {
+        if (sauce == PizzaOption.BBQ) {
             canvas.setForegroundColor(Color.ORANGE);
         } else {
             canvas.setForegroundColor(Color.RED);
@@ -95,7 +87,7 @@ public class Pizza {
      * and size at the top of the screen (once completed)
      */
     private void drawTopLine() {
-        String topLine = "Pizza (" + size + ")";
+        String topLine = "Pizza (" + size.getName() + ")";
 
         double stringX = topLeftX + 10;
         double stringY = topLeftY + 25;
@@ -112,13 +104,7 @@ public class Pizza {
      * crust and sauce ordered (once completed)
      */
     private void drawBottomLine() {
-
-        String sauce = "Tomato Sauce";
-        if (bbqSauce) {
-            sauce = "BBQ Sauce";
-        }
-
-        String bottomLine = "Crust: " + crust + ", " + sauce;
+        String bottomLine = "Crust: " + crust.getName() + ", " + sauce.getName();
 
         double stringX = topLeftX + 10;
         double stringY = topLeftY + 290;
@@ -128,106 +114,81 @@ public class Pizza {
         canvas.drawString(bottomLine, stringX, stringY);
     }
 
-    
-
-    private void drawTuna(double x, double y) {
-
-        for (int i = 0; i <= 30; i += 6) {
-            if (i % 12 != 0) {
-                canvas.setForegroundColor(Color.PINK);
-            } else {
-                canvas.setForegroundColor(Color.RED);
-            }
-            canvas.fillTriangle(x + 15 - i / 2, y + 15 - i, x - 15 + i / 2, y + 15 - i, x, y - 15);
-        }
-    }
-    
-    public void drawMushroom(double x, double y) {
-        canvas.setForegroundColor(Color.lightGray);
-        canvas.fillRectangle(x - 4, y, 8, 15);
-        canvas.fillSemiCircle(x - 13, y - 13, 26, 27, false, true);
-        canvas.setForegroundColor(Color.GRAY);
-        canvas.fillRectangle(x - 2, y, 4, 13);
-        canvas.fillSemiCircle(x - 10, y - 10, 20, 20, false, true);
-    }
-
+//    private void drawTuna(double x, double y) {
+//
+//        for (int i = 0; i <= 30; i += 6) {
+//            if (i % 12 != 0) {
+//                canvas.setForegroundColor(Color.PINK);
+//            } else {
+//                canvas.setForegroundColor(Color.RED);
+//            }
+//            canvas.fillTriangle(x + 15 - i / 2, y + 15 - i, x - 15 + i / 2, y + 15 - i, x, y - 15);
+//        }
+//    }
+//    public void drawMushroom(double x, double y) {
+//        canvas.setForegroundColor(Color.lightGray);
+//        canvas.fillRectangle(x - 4, y, 8, 15);
+//        canvas.fillSemiCircle(x - 13, y - 13, 26, 27, false, true);
+//        canvas.setForegroundColor(Color.GRAY);
+//        canvas.fillRectangle(x - 2, y, 4, 13);
+//        canvas.fillSemiCircle(x - 10, y - 10, 20, 20, false, true);
+//    }
     private void drawToppings() {
         double x = topLeftX + 110;
         double y = topLeftY + 105;
         for (int i = 0; i < 120; i += 40) {
             for (int j = 0; j < 120; j += 40) {
                 if ((i + j) % 80 == 0) {
-                    drawTopping(toppings[0], x + j, y + i);
-                } else {
-                    drawTopping(toppings[1], x + j, y + i);
+                    if (toppings[0] != null) {
+                        toppings[0].draw(x + j, y + i, canvas);
+                    }
+                } else if (toppings[1] != null) {
+                    toppings[1].draw(x + j, y + i, canvas);
                 }
-
             }
-        }
 
+        }
     }
 
-    private void drawTopping(String topping, double x, double y) {
-        if (topping != null) {
-            if (topping.equals("tuna")) {
-                tuna.drawTuna(x, y);
-            } else if (topping.equals("mushroom")) {
-                mushroom.drawMushroom(x, y);
-            } else {
-                System.out.println("Error: invalid topping");
-            }
-        }
-
-    }
-
+//    private void drawTopping(String topping, double x, double y) {
+//        if (topping != null) {
+//            if (topping.equals("tuna")) {
+//                tuna.drawTuna(x, y);
+//            } else if (topping.equals("mushroom")) {
+//                mushroom.drawMushroom(x, y);
+//            } else {
+//                System.out.println("Error: invalid topping");
+//            }
+//        }
+//    }
     public double getPrice() {
         double price = 0;
-        double basePrice = 0;
-//           What crust is the pizza
-        if (crust.equals("deep pan")) {
-            basePrice = 0.11;
-        } else if (crust.equals("thin crust")) {
-            basePrice = 0.08;
-        } else if (crust.equals("stuffed crust")) {
-            basePrice = 0.14;
-        } else {
-            System.out.println("base Pricing error");
-        }
-//           what sauce is the pizza
-        if (bbqSauce) {
-            price += 0.50;
-        }
-        for (int i = 0; i <= 1; i++) {
-            if (toppings[i] != null && toppings[i].equals("tuna")) {
-                price += 0.02 * (5 - i);
-            } else if (toppings[i] != null) {
-                price += 0.05 * (5 - i);
+        System.out.println("size" + size.getSize());
+        System.out.println("crust " + crust.getPrice());
+        price += crust.getPrice() * size.getSize();
+        price += sauce.getPrice();
+        for (int i = 0; i < toppings.length; i++) {
+            if (toppings[i] != null) {
+                price += (5 - i) * toppings[i].getPrice();
             }
         }
-        price += basePrice * area;
-        
         return Math.round(price * 100d) / 100d;
     }
 
-    public void printAll() {
-        System.out.println(size + crust + bbqSauce + toppings.toString());
-
-    }
-    
-    public void setSize(String newSize){
+    public void setSize(PizzaOption newSize) {
         size = newSize;
     }
-    
-    public void setCrust(String newCrust){
+
+    public void setCrust(PizzaOption newCrust) {
         crust = newCrust;
     }
-    
-    public void setBbq(boolean newSauce){
-        bbqSauce = newSauce;
+
+    public void setBbq(PizzaOption newSauce) {
+        sauce = newSauce;
     }
-    
-    public void setTopping(String[] newToppings){
+
+    public void setTopping(Topping[] newToppings) {
         toppings = newToppings;
     }
-    
+
 }

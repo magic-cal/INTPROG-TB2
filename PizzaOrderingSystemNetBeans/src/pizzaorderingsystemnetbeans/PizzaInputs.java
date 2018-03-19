@@ -89,7 +89,8 @@ public class PizzaInputs {
     public Topping[] enterToppings(String[] validToppings, Topping[] toppings) {
         Topping[] chosenToppings = {null, null};
         String enteredTopping = "";
-        for (int i = 0; i < getInput(new Integer[]{0, 1, 2}, "Topping ammount"); i++) {
+        int toppingNo =getInput(new Integer[]{0, 1, 2}, "Topping ammount");
+        for (int i = 0; i < toppingNo; i++) {
             while (enteredTopping != null) {
                 System.out.println("\nValid toppings are: ");
                 for (String topping : validToppings) {

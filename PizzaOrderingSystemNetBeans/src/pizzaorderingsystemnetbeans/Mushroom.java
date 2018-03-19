@@ -12,14 +12,14 @@ import java.awt.Color;
  * @author up825573
  */
 public class Mushroom extends Topping {
-    
+
 //    Canvas canvas;
-    public Mushroom(Canvas pCanvas){
-        super(pCanvas,0.04,Color.GRAY,Color.LIGHT_GRAY);
-//        canvas = pCanvas;
+    public Mushroom() {
+        super(0.05, Color.GRAY, Color.LIGHT_GRAY);
     }
-    
-    public void drawMushroom(double x, double y) {
+
+    @Override
+    public void draw(double x, double y, Canvas canvas) {
         canvas.setForegroundColor(secondaryColour);
         canvas.fillRectangle(x - 4, y, 8, 15);
         canvas.fillSemiCircle(x - 13, y - 13, 26, 27, false, true);
@@ -27,5 +27,5 @@ public class Mushroom extends Topping {
         canvas.fillRectangle(x - 2, y, 4, 13);
         canvas.fillSemiCircle(x - 10, y - 10, 20, 20, false, true);
     }
-    
+
 }

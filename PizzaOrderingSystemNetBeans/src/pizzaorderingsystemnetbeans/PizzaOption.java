@@ -11,9 +11,9 @@ package pizzaorderingsystemnetbeans;
  */
 public enum PizzaOption {
 
-    BBQ("BBQ", 0.50, 0.00),
-    TOMATO("Tomato", 0.00, 0),
-    SMALL("Small", 78.54, 0),
+    BBQ("BBQ Sauce", 0.50, 0.00),
+    TOMATO("Tomato Sauce", 0.00, 0),
+    SMALL("Small", 0, 78.54),
     MEDIUM("Medium", 0, 113.10),
     LARGE("Large", 0, 153.94),
     DEEPPAN("Deep pan", 0.11, 0),
@@ -27,6 +27,7 @@ public enum PizzaOption {
     PizzaOption(String pName, double pPrice, double pSize) {
         name = pName;
         price = pPrice;
+        size = pSize;
     }
 
     public String getName() {
