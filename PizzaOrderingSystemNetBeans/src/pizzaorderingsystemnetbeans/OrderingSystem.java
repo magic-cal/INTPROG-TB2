@@ -150,7 +150,7 @@ public class OrderingSystem {
     private void extendedFunctionality() {
         int currentPizza;
         while (pizzaInputs.proceed("Would you like to use extended functionality?")) {
-            while (pizzas.size() > 6 && pizzaInputs.proceed("Would you like to switch screens?")) {
+            while (pizzaInputs.proceed("Would you like to switch screens?")) {
                 changeScreen(pizzaInputs.getInput(0, (int) (pizzas.size() / 6) + 1, "Screen"));
             }
             while (pizzaInputs.proceed("Would you like change and delete pizzas")) {
