@@ -3,6 +3,7 @@ package pizzaorderingsystemnetbeans;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.stream.IntStream;
 
 /**
  * Class to manage the pizza order.
@@ -16,7 +17,7 @@ public class OrderingSystem {
     private ArrayList<Pizza> pizzas = new ArrayList();
     int currentIndex = 0;
     private PizzaOption[] options;
-    private Topping[] availableToppings = {new Tuna(), new Mushroom(),null};
+    private Topping[] availableToppings = {new Tuna(), new Mushroom(), null};
 
 //    PizzaOption options  = PizzaOption;
     /**
@@ -52,25 +53,24 @@ public class OrderingSystem {
      */
     public void startOrdering() {
 
-        pizzas.add(new Pizza(canvas, PizzaOption.LARGE, PizzaOption.THINCRUST, PizzaOption.TOMATO, new Topping[]{availableToppings[1],availableToppings[1]}));
-//        pizzas.add(new Pizza(canvas, PizzaOption.MEDIUM, PizzaOption.DEEPPAN, PizzaOption.BBQ, new Topping[]{availableToppings[1],availableToppings[0]}));
-//        pizzas.add(new Pizza(canvas, "large", "deep pan", true,  new Topping[]{availableToppings[0],availableToppings[0]}));
-//        pizzas.add(new Pizza(canvas, "large", "stuffed crust", false,  new Topping[]{availableToppings[0],availableToppings[0]}));
-//        pizzas.add(new Pizza(canvas, "medium", "deep pan", true,  new Topping[]{availableToppings[0],availableToppings[0]}));
-//        pizzas.add(new Pizza(canvas, "small", "thin crust", false,  new Topping[]{availableToppings[0],availableToppings[0]}));
-//        pizzas.add(new Pizza(canvas, "small", "thin crust", false, new String[]{"mushroom", "mushroom"}));
-//        pizzas.add(new Pizza(canvas, "small", "thin crust", false, new String[]{"mushroom", "mushroom"}));
-//        pizzas.add(new Pizza(canvas, "medium", "deep pan", true, new String[]{"mushroom", "tuna"}));
-
-//        System.out.println(calculatePrice(0));
-//        do{
+//        System.out.println(pizzaInputs.enterToppings1(new String[]{"tuna", "mushroom"}, availableToppings));
+        pizzas.add(new Pizza(canvas, PizzaOption.LARGE, PizzaOption.THINCRUST, PizzaOption.TOMATO, new Topping[]{availableToppings[1], availableToppings[1]}));
+        pizzas.add(new Pizza(canvas, PizzaOption.MEDIUM, PizzaOption.DEEPPAN, PizzaOption.BBQ, new Topping[]{availableToppings[1], availableToppings[2]}));
+        pizzas.add(new Pizza(canvas, PizzaOption.LARGE, PizzaOption.STUFFEDCRUST, PizzaOption.TOMATO, new Topping[]{availableToppings[1], availableToppings[1]}));
+        pizzas.add(new Pizza(canvas, PizzaOption.SMALL, PizzaOption.DEEPPAN, PizzaOption.BBQ, new Topping[]{availableToppings[0], availableToppings[0]}));
+        pizzas.add(new Pizza(canvas, PizzaOption.SMALL, PizzaOption.STUFFEDCRUST, PizzaOption.BBQ, new Topping[]{availableToppings[1], availableToppings[0]}));
+        pizzas.add(new Pizza(canvas, PizzaOption.MEDIUM, PizzaOption.THINCRUST, PizzaOption.TOMATO, new Topping[]{availableToppings[2], availableToppings[2]}));
+//        pizzas.add(new Pizza(canvas, PizzaOption.MEDIUM, PizzaOption.THINCRUST, PizzaOption.TOMATO, new Topping[]{availableToppings[2], availableToppings[2]}));
+//        pizzas.add(new Pizza(canvas, PizzaOption.MEDIUM, PizzaOption.THINCRUST, PizzaOption.TOMATO, new Topping[]{availableToppings[2], availableToppings[2]}));
+//        do {
 //            pizzas.add(choosePizza());
 //            System.out.println(pizzas.size());
-//        }while(pizzas.size()<6&&pizzaInputs.proceed("Would you like to input another pizza?"));
+//        } while (pizzaInputs.proceed("Would you like to input another pizza?"));
 ////        
         updateOrderScreen();
-        System.out.println("======================");
-        choosePizza1();
+//        System.out.println("======================");
+//        pizzas.add(choosePizza());
+//        updateOrderScreen();
         extendedFunctionality();
 
         try {
@@ -87,7 +87,7 @@ public class OrderingSystem {
 
     public void displayPizzas(int currentScreen) {
         for (int i = 0; i < 600 && currentScreen < pizzas.size(); i += 300) {
-            for (int j = 0; j <= 600 && currentScreen < pizzas.size(); j += 300, currentScreen++) { 
+            for (int j = 0; j <= 600 && currentScreen < pizzas.size(); j += 300, currentScreen++) {
                 pizzas.get(currentScreen).displayPizza(j, i);
             }
         }
@@ -101,19 +101,17 @@ public class OrderingSystem {
 //        Pizza chosenPizza = new Pizza(canvas, size, crust, changeSauce, toppings);
 //        return chosenPizza;
 //    }
-    public void choosePizza1() {
+    public Pizza choosePizza() {
         PizzaOption[] sizes = {options[2], options[3], options[4]};
         PizzaOption[] crusts = {options[5], options[6], options[7]};
 
-        PizzaOption size = pizzaInputs.getInput2(new String[]{"small", "medium", "large"}, "Size", sizes);
-        PizzaOption crust = pizzaInputs.getInput2(new String[]{"deep pan", "thin crust", "stuffed crust"}, "Crust", crusts);
+        PizzaOption size = pizzaInputs.getInput(new String[]{"small", "medium", "large"}, "Size", sizes);
+        PizzaOption crust = pizzaInputs.getInput(new String[]{"deep pan", "thin crust", "stuffed crust"}, "Crust", crusts);
         PizzaOption sauce = pizzaInputs.changeSauce();
         Topping[] toppings = pizzaInputs.enterToppings(new String[]{"tuna", "mushroom"}, availableToppings);
-        System.out.println(size.name());
-        System.out.println(crust.name());
-        System.out.println(sauce.name());
-//        Pizza chosenPizza = new Pizza(canvas, size, crust, changeSauce, toppings);
-//        return chosenPizza;
+        Pizza chosenPizza = new Pizza(canvas, size, crust, sauce, toppings);
+
+        return chosenPizza;
     }
 
     private double calculatePrice(int index) {
@@ -128,7 +126,7 @@ public class OrderingSystem {
     private void updatePrice(int currentScreen) {
         canvas.setForegroundColor(Color.BLACK);
         canvas.setFontSize(25);
-        canvas.drawString("Total Price of the Order: £" + String.format( "%.2f",calculatePrice(currentScreen)), 10, 640);
+        canvas.drawString("Total Price of the Order: £" + String.format("%.2f", calculatePrice(currentScreen)), 10, 640);
     }
 
     private void updateOrderScreen() {
@@ -139,24 +137,35 @@ public class OrderingSystem {
 
     }
 
-    private void changeOrder() {
-
-    }
-
     private void changeScreen(int newIndex) {
-        if (newIndex % 6 == 0 && pizzas.size() >= newIndex) {
-            currentIndex = newIndex;
-        } else {
-            System.out.println("that was not a valid page");
-        }
+//        if (newIndex % 6 == 0 && pizzas.size() >= newIndex) {
+        currentIndex = newIndex * 6;
+        updateOrderScreen();
+
+//        } else {
+//            System.out.println("that was not a valid page");
+//        }
     }
 
     private void extendedFunctionality() {
+        int currentPizza;
         while (pizzaInputs.proceed("Would you like to use extended functionality?")) {
             while (pizzas.size() > 6 && pizzaInputs.proceed("Would you like to switch screens?")) {
-
+                changeScreen(pizzaInputs.getInput(0, (int) (pizzas.size() / 6) + 1, "Screen"));
             }
             while (pizzaInputs.proceed("Would you like change and delete pizzas")) {
+                System.out.println("pizzas.size+ "+(pizzas.size()));
+                currentPizza = pizzaInputs.getInput(0,(pizzas.size()-1), "Pizza");
+                if (pizzaInputs.proceed("Would you like to delete pizza : " + currentPizza)) {
+                    pizzas.remove(currentPizza);
+                    if(!(pizzas.size()-(currentIndex*6)>0)){
+                        changeScreen(currentIndex-1);
+                    }
+                    updateOrderScreen();
+                } else if (pizzaInputs.proceed("Would you like to edit pizza : " + currentPizza)) {
+                    pizzas.add(currentIndex, choosePizza());
+                    updateOrderScreen();
+                }
 
             }
 

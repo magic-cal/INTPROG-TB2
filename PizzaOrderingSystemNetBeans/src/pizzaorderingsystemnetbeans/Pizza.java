@@ -152,9 +152,9 @@ public class Pizza {
 
 //    private void drawTopping(String topping, double x, double y) {
 //        if (topping != null) {
-//            if (topping.equals("tuna")) {
+//            if (topping.equalsIgnoreCase("tuna")) {
 //                tuna.drawTuna(x, y);
-//            } else if (topping.equals("mushroom")) {
+//            } else if (topping.equalsIgnoreCase("mushroom")) {
 //                mushroom.drawMushroom(x, y);
 //            } else {
 //                System.out.println("Error: invalid topping");

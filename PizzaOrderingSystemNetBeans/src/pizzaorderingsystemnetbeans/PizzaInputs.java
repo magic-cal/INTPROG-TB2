@@ -56,9 +56,8 @@ public class PizzaInputs {
             System.out.println("\nPlease enter either : \"y\" to change base to BBQ or : \"n\" to keep tomato");
 
             enteredValue = inputs.getInputString();
-            System.out.println(enteredValue);
-        } while (!((enteredValue.equals("y")) || ((enteredValue.equals("n")))));
-        if (enteredValue.equals("y")) {
+        } while (!((enteredValue.equalsIgnoreCase("y")) || ((enteredValue.equalsIgnoreCase("n")))));
+        if (enteredValue.equalsIgnoreCase("y")) {
             return PizzaOption.BBQ;
         } else {
             return PizzaOption.TOMATO;
@@ -85,53 +84,84 @@ public class PizzaInputs {
 //        return toppings;
 //
 //    }
-
+//    public Topping[] enterToppings(String[] validToppings, Topping[] toppings) {
+//        Topping[] chosenToppings = {null, null};
+//        String enteredTopping = "";
+//        int toppingNo = getInput(new Integer[]{0, 1, 2}, "Topping ammount");
+//        for (int i = 0; i < toppingNo; i++) {
+//            System.out.println("Integer i select " + i);
+//            do {
+//                System.out.println("\nValid toppings are: ");
+//                for (String topping : validToppings) {
+//                    System.out.println(topping);
+//                }
+//                System.out.println("Please enter valid topping no: " + (i + 1));
+//                enteredTopping = inputs.getInputString();
+//
+//                for (int j = 0; j < toppings.length; j++) {
+//                    if (enteredTopping != null && enteredTopping.equalsIgnoreCase(validToppings[j])) {
+//                        chosenToppings[i] = toppings[j];
+//                        System.out.println("chosenToppings" + (i + 1) + " " + chosenToppings[i]);
+//                        enteredTopping = null;
+//                    } else {
+//
+//                    }
+//
+//                }
+//
+//            } while (enteredTopping != null);
+//
+//        }
+//        return toppings;
+//
+//    }
     public Topping[] enterToppings(String[] validToppings, Topping[] toppings) {
         Topping[] chosenToppings = {null, null};
         String enteredTopping = "";
-        int toppingNo =getInput(new Integer[]{0, 1, 2}, "Topping ammount");
+        int toppingNo = getInput(new Integer[]{0, 1, 2}, "Topping ammount");
         for (int i = 0; i < toppingNo; i++) {
-            while (enteredTopping != null) {
+            do {
                 System.out.println("\nValid toppings are: ");
                 for (String topping : validToppings) {
                     System.out.println(topping);
                 }
-                System.out.println("Please valid topping no: " + i);
+                System.out.println("Please enter valid topping no: " + (i + 1));
                 enteredTopping = inputs.getInputString();
-
-                for (int j = 0; j < toppings.length; j++) {
-                    if (enteredTopping.equalsIgnoreCase(validToppings[j])) {
+                for (int j = 0; j <= 1; j++) {
+                    System.out.println("j " + j);
+                    if (validToppings[j].equalsIgnoreCase(enteredTopping)) {
                         chosenToppings[i] = toppings[j];
+                        System.out.println("position " + i + " is = " + toppings[j]);
+                        break;
                     }
                 }
-            }
+            } while (chosenToppings[i] == null);
         }
-        return toppings;
-
+        return chosenToppings;
     }
 
     public int getInput(Integer[] validNumbers, String toChoose) {
         int chosenInt = 0;
         do {
-
             System.out.println("Valid " + toChoose + "s are:");
             for (int validNumber : validNumbers) {
                 System.out.println(validNumber);
             }
             System.out.println("\nPlease enter a valid " + toChoose);
             chosenInt = inputs.getInputInteger();
-        } while (Arrays.asList(validNumbers).contains(chosenInt));
+        } while (!Arrays.asList(validNumbers).contains(chosenInt));
+        System.out.println("Returned Get Input int " + chosenInt);
         return chosenInt;
     }
 
     public boolean proceed(String task) {
         String enteredValue;
         do {
-            System.out.println(task);
+            System.out.println("\n" + task);
             System.out.println("Please enter \"y\" to continue or : \"n\" to stop\n");
             enteredValue = inputs.getInputString();
-        } while (!((enteredValue.equals("y")) || ((enteredValue.equals("n")))));
-        if (enteredValue.equals("y")) {
+        } while (!((enteredValue.equalsIgnoreCase("y")) || ((enteredValue.equalsIgnoreCase("n")))));
+        if (enteredValue.equalsIgnoreCase("y")) {
             return true;
         } else {
             return false;
@@ -140,24 +170,24 @@ public class PizzaInputs {
     }
 
     //todo//
-    public String getInput(String[] validOptions, String itemToChoose) {
-        String enteredValue;
-        do {
-            System.out.println("valid " + itemToChoose + "s are:");
-            for (String option : validOptions) {
-                System.out.println(option);
-            }
-            System.out.println("Please enter a valid " + itemToChoose);
-            enteredValue = inputs.getInputString();
-        } while (!(Arrays.asList(validOptions).contains(enteredValue)));
-        return enteredValue;
-    }
-
-    public PizzaOption getInput2(String[] validOptions, String itemToChoose, PizzaOption[] options) {
+//    public String getInput(String[] validOptions, String itemToChoose) {
+//        String enteredValue;
+//        do {
+//            System.out.println("valid " + itemToChoose + "s are:");
+//            for (String option : validOptions) {
+//                System.out.println(option);
+//            }
+//            System.out.println("Please enter a valid " + itemToChoose);
+//            enteredValue = inputs.getInputString();
+//        } while (!(Arrays.asList(validOptions).contains(enteredValue)));
+//
+//        return enteredValue;
+//    }
+    public PizzaOption getInput(String[] validOptions, String itemToChoose, PizzaOption[] options) {
         String enteredValue = "";
         while (enteredValue != (null)) {
 
-            System.out.println("valid " + itemToChoose + "s are:");
+            System.out.println("\nvalid " + itemToChoose + "s are:");
             for (String validOption : validOptions) {
                 System.out.println(validOption);
             }
@@ -173,6 +203,21 @@ public class PizzaInputs {
         }
         System.out.println("Major error");
         return options[0];
+    }
+
+    public int getInput(int lowest, int highest, String toChoose) {
+        int chosenInt = 0;
+        do {
+            System.out.println("\nValid " + toChoose + "s are:");
+            for (int i = lowest; i <= highest; i++) {
+                System.out.println(i);
+            }
+            System.out.println("\nPlease enter a valid " + toChoose);
+            chosenInt = inputs.getInputInteger();
+            
+        } while (chosenInt > highest || chosenInt < lowest);
+        System.out.println("Returned Get Input int " + chosenInt);
+        return chosenInt;
     }
 
 //    public String getInput(PizzaOption[] toppings, String itemToChoose){
