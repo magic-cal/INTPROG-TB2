@@ -23,7 +23,7 @@ public class Pizza {
     private String crust;
     private boolean bbqSauce;
     private String[] toppings;
-    private double area = 0;
+    private double area;
     private Tuna tuna;
     private Mushroom mushroom;
 
@@ -38,18 +38,15 @@ public class Pizza {
         crust = pizzaCrust;
         bbqSauce = pizzaSauce;
         toppings = pizzaToppings;
-        int radius = 0;
         if (size.equals("small")) {
-            radius = 5;
+            area = 78.54;
         } else if (size.equals("medium")) {
-            radius = 6;
+            area = 113.10;
         } else if (size.equals("large")) {
-            radius = 7;
+            area = 153.94;
         } else {
             System.out.println("Pizza Size Error");
         }
-        area = Math.round(Math.PI * Math.pow(radius, 2) * 100d) / 100d;
-        System.out.println("area :"+area);
          tuna = new Tuna(canvas);
          mushroom = new Mushroom(canvas);
 

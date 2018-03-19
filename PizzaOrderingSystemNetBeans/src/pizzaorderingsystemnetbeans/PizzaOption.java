@@ -13,7 +13,7 @@ public enum PizzaOption {
 
     BBQ("BBQ",0.50),
     TOMATO("Tomato",0.00),
-    DEEPPAN("Deep pan",0.11),
+    DEEPPAN("Deep pan",0.11),  
     THINCRUST("Thin crust",0.08),
     STUFFEDCRUST("Stuffed crust",0.14);
     

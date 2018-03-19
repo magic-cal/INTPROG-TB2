@@ -104,6 +104,15 @@ try {
         Pizza chosenPizza = new Pizza(canvas, size, crust, changeSauce, toppings);
         return chosenPizza;
     }
+    
+    public Pizza choosePizza1() {
+        String size = pizzaInputs.getInput(new String[]{"small", "medium", "large"},"Size");
+        String crust = pizzaInputs.getInput(new String[]{"deep pan", "thin crust", "stuffed crust"},"Crust");
+        boolean changeSauce = pizzaInputs.changeSauce();
+        String[] toppings = pizzaInputs.enterToppings();
+        Pizza chosenPizza = new Pizza(canvas, size, crust, changeSauce, toppings);
+        return chosenPizza;
+    }
 
     private double calculatePrice(int index){
         double totPrice=0;
@@ -131,12 +140,21 @@ try {
     private void changeOrder(){
         
     }
+    
+    
     private void changeScreen(int newIndex){
         if(newIndex%6 == 0 && pizzas.size()>= newIndex){
             currentIndex = newIndex;
-        }
-        else{
+        }else{
             System.out.println("that was not a valid page");
         }
+    }
+    
+    private void extendedFunctionality(){
+        while(true){
+            System.out.println("");
+            
+        }
+        
     }
 }

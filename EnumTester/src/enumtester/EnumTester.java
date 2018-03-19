@@ -5,6 +5,7 @@
  */
 package enumtester;
 
+
 import java.util.Arrays;
 
 /**
@@ -17,6 +18,7 @@ public class EnumTester {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+//        PizzaInput pi = new PizzaInput();
         PizzaOptions[] sauce = {PizzaOptions.BBQ,PizzaOptions.TOMATO};
         PizzaOptions[] base = {PizzaOptions.DEEPPAN,PizzaOptions.THINCRUST,PizzaOptions.STUFFEDCRUST};
         PizzaOptions[] size = {PizzaOptions.SMALL,PizzaOptions.MEDIUM,PizzaOptions.LARGE};
@@ -24,30 +26,16 @@ public class EnumTester {
         String in = "BBQ";
         for(PizzaOptions option: PizzaOptions.values()){
             System.out.println(option);
-            System.out.println(option.getDesc());
+//            System.out.println(option.getDesc());
             
         }
-        if ("BBQ".equals(PizzaOptions.BBQ.toString())) {
-            System.out.println("hui");
-        }
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~####~~~~~~~~~~~~~~~~~~~~~~~~~~");
         
-//        getInput(PizzaOptions.Sauce.values(),"Sauce");
+//        pi.getInput(sauce,"Sauce");
         
         // TODO code application logic here
     }
     
-    public String getInput(PizzaOptions[] toppings, String itemToChoose){
-        String enteredTopping;
-       do {
-            System.out.println("Please valid "+itemToChoose+"s are:");
-            for (PizzaOptions topping : toppings) {
-                System.out.println(topping.toString());
-            }
-            System.out.println("Please valid "+itemToChoose+"s are:");
-            enteredTopping = "BBQ";
-            System.out.println("input");
-        } while (!(Arrays.asList(toppings).contains(enteredTopping)));
-        return enteredTopping;
-    }
+    
     
 }

@@ -11,29 +11,33 @@ package enumtester;
  */
 public enum PizzaOptions {
 
-    BBQ("BBQ",0.50),
-    TOMATO("Tomato",0.00),
-    SMALL("Small",78.54),
-    MEDIUM("Medium",113.10),
-    LARGE("Large",153.94),
-    DEEPPAN("Deep pan",0.11),
-    THINCRUST("Thin crust",0.08),
-    STUFFEDCRUST("Stuffed crust",0.14);
-    
-    
-    private String desc;
+    BBQ("BBQ", 0.50, 0.00),
+    TOMATO("Tomato", 0.00, 0),
+    SMALL("Small", 78.54, 0),
+    MEDIUM("Medium", 0, 113.10),
+    LARGE("Large", 0, 153.94),
+    DEEPPAN("Deep pan", 0.11, 0),
+    THINCRUST("Thin crust", 0.08, 0),
+    STUFFEDCRUST("Stuffed crust", 0.14, 0);
+
+    private String name;
     private double price;
-    
-    PizzaOptions (String pDesc, double pPrice){
-        desc = pDesc;
+    private double size;
+
+    PizzaOptions(String pName, double pPrice, double pSize) {
+        name = pName;
         price = pPrice;
     }
-    
-    public String getDesc(){
-        return desc;
+
+    public String getName() {
+        return name;
     }
-    
-    public double getPrice(){
+
+    public double getPrice() {
         return price;
+    }
+
+    public double getSize() {
+        return size;
     }
 }
