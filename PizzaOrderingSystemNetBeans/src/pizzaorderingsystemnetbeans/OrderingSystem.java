@@ -53,12 +53,13 @@ public class OrderingSystem {
     public void startOrdering() {
 
 //        System.out.println(pizzaInputs.enterToppings1(new String[]{"tuna", "mushroom"}, availableToppings));
-//        pizzas.add(new Pizza(canvas, PizzaOption.LARGE, PizzaOption.THINCRUST, PizzaOption.TOMATO, new Topping[]{availableToppings[1], availableToppings[1]}));
-//        pizzas.add(new Pizza(canvas, PizzaOption.MEDIUM, PizzaOption.DEEPPAN, PizzaOption.BBQ, new Topping[]{availableToppings[1], availableToppings[2]}));
-//        pizzas.add(new Pizza(canvas, PizzaOption.LARGE, PizzaOption.STUFFEDCRUST, PizzaOption.TOMATO, new Topping[]{availableToppings[1], availableToppings[1]}));
-//        pizzas.add(new Pizza(canvas, PizzaOption.SMALL, PizzaOption.DEEPPAN, PizzaOption.BBQ, new Topping[]{availableToppings[0], availableToppings[0]}));
-//        pizzas.add(new Pizza(canvas, PizzaOption.SMALL, PizzaOption.STUFFEDCRUST, PizzaOption.BBQ, new Topping[]{availableToppings[1], availableToppings[0]}));
-//        pizzas.add(new Pizza(canvas, PizzaOption.MEDIUM, PizzaOption.THINCRUST, PizzaOption.TOMATO, new Topping[]{availableToppings[2], availableToppings[2]}));
+        pizzas.add(new Pizza(canvas, PizzaOption.LARGE, PizzaOption.THINCRUST, PizzaOption.TOMATO, new Topping[]{availableToppings[1], availableToppings[1]}));
+        pizzas.add(new Pizza(canvas, PizzaOption.MEDIUM, PizzaOption.DEEPPAN, PizzaOption.BBQ, new Topping[]{availableToppings[1], availableToppings[2]}));
+        pizzas.add(new Pizza(canvas, PizzaOption.LARGE, PizzaOption.STUFFEDCRUST, PizzaOption.TOMATO, new Topping[]{availableToppings[1], availableToppings[1]}));
+        pizzas.add(new Pizza(canvas, PizzaOption.SMALL, PizzaOption.DEEPPAN, PizzaOption.BBQ, new Topping[]{availableToppings[0], availableToppings[0]}));
+        pizzas.add(new Pizza(canvas, PizzaOption.SMALL, PizzaOption.STUFFEDCRUST, PizzaOption.BBQ, new Topping[]{availableToppings[1], availableToppings[0]}));
+        pizzas.add(new Pizza(canvas, PizzaOption.MEDIUM, PizzaOption.THINCRUST, PizzaOption.TOMATO, new Topping[]{availableToppings[2], availableToppings[2]}));
+        
 //        pizzas.add(new Pizza(canvas, PizzaOption.LARGE, PizzaOption.THINCRUST, PizzaOption.TOMATO, new Topping[]{availableToppings[1], availableToppings[1]}));
 //        pizzas.add(new Pizza(canvas, PizzaOption.LARGE, PizzaOption.THINCRUST, PizzaOption.TOMATO, new Topping[]{availableToppings[1], availableToppings[1]}));
 //        pizzas.add(new Pizza(canvas, PizzaOption.MEDIUM, PizzaOption.DEEPPAN, PizzaOption.BBQ, new Topping[]{availableToppings[1], availableToppings[2]}));
@@ -88,7 +89,8 @@ public class OrderingSystem {
     public void displayPizzas(int currentScreen) {
         for (int i = 0; i < 600 && currentScreen < pizzas.size(); i += 300) {
             for (int j = 0; j <= 600 && currentScreen < pizzas.size(); j += 300, currentScreen++) {
-                pizzas.get(currentScreen).displayPizza(j, i);
+                System.out.println(currentScreen);
+                pizzas.get(currentScreen).displayPizza(j, i,currentScreen);
             }
         }
     }
@@ -182,13 +184,13 @@ public class OrderingSystem {
             }
             while (pizzaInputs.proceed("Would you like change and delete pizzas")) {
                 System.out.println("pizzas.size+ " + (pizzas.size()));
-                currentPizza = pizzaInputs.getInput(0, (pizzas.size() - 1), "Selectable Pizza");
-                if (pizzaInputs.proceed("Would you like to delete pizza : " + currentPizza)) {
+                currentPizza = (pizzaInputs.getInput(1, (pizzas.size()), "Selectable Pizza")-1);
+                if (pizzaInputs.proceed("Would you like to delete pizza : " + (currentPizza+1))) {
                     pizzas.remove(currentPizza);
                     updateOrderScreen();
-                } else if (pizzaInputs.proceed("Would you like to edit pizza : " + currentPizza)) {
-                    pizzas.remove(currentPizza);
-                    pizzas.add(currentIndex, choosePizza());
+                } else if (pizzaInputs.proceed("Would you like to edit pizza : " + (currentPizza+1))) {
+                    pizzas.set(currentIndex, choosePizza());
+                    
                     updateOrderScreen();
                 }
 

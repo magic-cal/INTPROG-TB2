@@ -46,13 +46,13 @@ public class Pizza {
      * pizza on
      *
      */
-    public void displayPizza(double startX, double startY) {
-
+    public void displayPizza(double startX, double startY,int pizzaNo) {
+//ADD FUNC NO
         topLeftX = startX;
         topLeftY = startY;
         drawPizza();
         drawBottomLine();
-        drawTopLine();
+        drawTopLine(pizzaNo);
         drawToppings();
 
     }
@@ -78,9 +78,10 @@ public class Pizza {
      * Method to write the information shown in the bottom line of the
      * individual pizza on the screen. This method will display the pizza number
      * and size at the top of the screen (once completed)
+     * @param pizzaNo is the index/reference number of the current pizza
      */
-    private void drawTopLine() {
-        String topLine = "Pizza (" + size.getName() + ")";
+    private void drawTopLine(int pizzaNo) {
+        String topLine = "Pizza "+(pizzaNo+1)+" (" + size.getName() + ")";
 
         double stringX = topLeftX + 10;
         double stringY = topLeftY + 25;
