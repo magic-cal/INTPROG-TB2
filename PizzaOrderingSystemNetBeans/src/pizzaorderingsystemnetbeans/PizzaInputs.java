@@ -50,7 +50,6 @@ public class PizzaInputs {
                     System.out.println("j " + j);
                     if (validToppings[j].equalsIgnoreCase(enteredTopping)) {
                         chosenToppings[i] = toppings[j];
-                        System.out.println("position " + i + " is = " + toppings[j]);
                         break;
                     } else if (j == 1) {
                         System.out.println("\n\"" + enteredTopping + "\" was invalid, Try again");
@@ -88,7 +87,6 @@ public class PizzaInputs {
             chosenInt = inputs.getInputInteger();
             incorrect = true;
         } while (!Arrays.asList(validNumbers).contains(chosenInt));
-        System.out.println("Returned Get Input int " + chosenInt);
         return chosenInt;
     }
     
@@ -166,7 +164,7 @@ public class PizzaInputs {
             System.out.println("\n\"" + enteredValue + "\" was an invalid " + itemToChoose);
 
         }
-        System.out.println("Major error");
+        System.out.println("Get Input Looping Error");
         return options[0];
     }
 
@@ -191,7 +189,6 @@ public class PizzaInputs {
             chosenInt = inputs.getInputInteger();
 
         } while (chosenInt > highest || chosenInt < lowest);
-        System.out.println("Returned Get Input int " + chosenInt);
         return chosenInt;
     }
 

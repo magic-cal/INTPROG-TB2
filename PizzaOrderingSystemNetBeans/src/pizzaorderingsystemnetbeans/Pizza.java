@@ -85,7 +85,6 @@ public class Pizza {
 
         double stringX = topLeftX + 10;
         double stringY = topLeftY + 25;
-        System.out.println("top " + topLeftY);
 
         canvas.setForegroundColor(Color.BLACK);
         canvas.setFontSize(15);
@@ -155,8 +154,6 @@ public class Pizza {
      */
     public double getPrice() {
         double price = 0;
-        System.out.println("size" + size.getArea());
-        System.out.println("crust " + crust.getPrice());
         price += crust.getPrice() * size.getArea();
         price += sauce.getPrice();
         for (int i = 0; i < toppings.length; i++) {

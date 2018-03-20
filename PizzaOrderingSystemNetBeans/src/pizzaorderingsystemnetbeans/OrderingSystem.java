@@ -89,7 +89,6 @@ public class OrderingSystem {
     public void displayPizzas(int currentScreen) {
         for (int i = 0; i < 600 && currentScreen < pizzas.size(); i += 300) {
             for (int j = 0; j <= 600 && currentScreen < pizzas.size(); j += 300, currentScreen++) {
-                System.out.println(currentScreen);
                 pizzas.get(currentScreen).displayPizza(j, i,currentScreen);
             }
         }
@@ -127,7 +126,6 @@ public class OrderingSystem {
         for (int i = index; i < index + 6 && index + i < pizzas.size() + index; i++) {
             totPrice += pizzas.get(i).getPrice();
         }
-        System.out.println(totPrice + " hgfhf");
         return totPrice;
     }
 
@@ -177,18 +175,18 @@ public class OrderingSystem {
      */
     private void extendedFunctionality() {
         int currentPizza;
-        while (pizzaInputs.proceed("Would you like to use extended functionality?")) {
+        while (pizzaInputs.proceed("Would you like to edit pizzas and switch between screens?")) {
             while (pizzaInputs.proceed("Would you like to switch screens?")) {
                 System.out.println(pizzas.size() / 7);
                 changeScreen(pizzaInputs.getInput(0, (int) ((pizzas.size() / 7)), "Screen"));
             }
-            while (pizzaInputs.proceed("Would you like change and delete pizzas")) {
+            while (pizzaInputs.proceed("Would you like change and delete pizzas?")) {
                 System.out.println("pizzas.size+ " + (pizzas.size()));
                 currentPizza = (pizzaInputs.getInput(1, (pizzas.size()), "Selectable Pizza")-1);
-                if (pizzaInputs.proceed("Would you like to delete pizza : " + (currentPizza+1))) {
+                if (pizzaInputs.proceed("Would you like to delete pizza : " + (currentPizza+1)+"?")) {
                     pizzas.remove(currentPizza);
                     updateOrderScreen();
-                } else if (pizzaInputs.proceed("Would you like to edit pizza : " + (currentPizza+1))) {
+                } else if (pizzaInputs.proceed("Would you like to edit pizza : " + (currentPizza+1)+"?")) {
                     pizzas.set(currentIndex, choosePizza());
                     
                     updateOrderScreen();
