@@ -60,6 +60,17 @@ public class OrderingSystem {
         pizzas.add(new Pizza(canvas, PizzaOption.SMALL, PizzaOption.DEEPPAN, PizzaOption.BBQ, new Topping[]{availableToppings[0], availableToppings[0]}));
         pizzas.add(new Pizza(canvas, PizzaOption.SMALL, PizzaOption.STUFFEDCRUST, PizzaOption.BBQ, new Topping[]{availableToppings[1], availableToppings[0]}));
         pizzas.add(new Pizza(canvas, PizzaOption.MEDIUM, PizzaOption.THINCRUST, PizzaOption.TOMATO, new Topping[]{availableToppings[2], availableToppings[2]}));
+        
+//        pizzas.add(new Pizza(canvas, PizzaOption.LARGE, PizzaOption.THINCRUST, PizzaOption.TOMATO, new Topping[]{availableToppings[1], availableToppings[1]}));
+//        pizzas.add(new Pizza(canvas, PizzaOption.LARGE, PizzaOption.THINCRUST, PizzaOption.TOMATO, new Topping[]{availableToppings[1], availableToppings[1]}));
+//        pizzas.add(new Pizza(canvas, PizzaOption.MEDIUM, PizzaOption.DEEPPAN, PizzaOption.BBQ, new Topping[]{availableToppings[1], availableToppings[2]}));
+//        pizzas.add(new Pizza(canvas, PizzaOption.LARGE, PizzaOption.STUFFEDCRUST, PizzaOption.TOMATO, new Topping[]{availableToppings[1], availableToppings[1]}));
+//        pizzas.add(new Pizza(canvas, PizzaOption.SMALL, PizzaOption.DEEPPAN, PizzaOption.BBQ, new Topping[]{availableToppings[0], availableToppings[0]}));
+//        pizzas.add(new Pizza(canvas, PizzaOption.SMALL, PizzaOption.STUFFEDCRUST, PizzaOption.BBQ, new Topping[]{availableToppings[1], availableToppings[0]}));
+//      
+//      pizzas.add(new Pizza(canvas, PizzaOption.MEDIUM, PizzaOption.THINCRUST, PizzaOption.TOMATO, new Topping[]{availableToppings[2], availableToppings[2]}));
+//      pizzas.add(new Pizza(canvas, PizzaOption.LARGE, PizzaOption.THINCRUST, PizzaOption.TOMATO, new Topping[]{availableToppings[1], availableToppings[1]}));
+        
 //        pizzas.add(new Pizza(canvas, PizzaOption.MEDIUM, PizzaOption.THINCRUST, PizzaOption.TOMATO, new Topping[]{availableToppings[2], availableToppings[2]}));
 //        pizzas.add(new Pizza(canvas, PizzaOption.MEDIUM, PizzaOption.THINCRUST, PizzaOption.TOMATO, new Topping[]{availableToppings[2], availableToppings[2]}));
 //        do {
@@ -151,16 +162,14 @@ public class OrderingSystem {
         int currentPizza;
         while (pizzaInputs.proceed("Would you like to use extended functionality?")) {
             while (pizzaInputs.proceed("Would you like to switch screens?")) {
-                changeScreen(pizzaInputs.getInput(0, (int) (pizzas.size() / 6) + 1, "Screen"));
+                System.out.println(pizzas.size()/7);
+                changeScreen(pizzaInputs.getInput(0,(int)((pizzas.size()/7)), "Screen"));
             }
             while (pizzaInputs.proceed("Would you like change and delete pizzas")) {
                 System.out.println("pizzas.size+ "+(pizzas.size()));
                 currentPizza = pizzaInputs.getInput(0,(pizzas.size()-1), "Pizza");
                 if (pizzaInputs.proceed("Would you like to delete pizza : " + currentPizza)) {
                     pizzas.remove(currentPizza);
-                    if(!(pizzas.size()-(currentIndex*6)>0)){
-                        changeScreen(currentIndex-1);
-                    }
                     updateOrderScreen();
                 } else if (pizzaInputs.proceed("Would you like to edit pizza : " + currentPizza)) {
                     pizzas.add(currentIndex, choosePizza());
