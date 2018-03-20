@@ -14,23 +14,19 @@ public class Pizza {
     private Canvas canvas;
     private double topLeftX;
     private double topLeftY;
-    /*
-    
-    todo Change type. 
-     */
-//    TODO
     private PizzaOption size;
     private PizzaOption crust;
     private PizzaOption sauce;
     private Topping[] toppings;
-    private double area;
-    private Tuna tuna;
-    private Mushroom mushroom;
 
     /**
-     * Constructor for pizza.
+     * Constructor for Pizza.
      *
      * @param win the window to draw the pizza on
+     * @param pizzaSize Enum of PizzaOption of the Size of the pizza
+     * @param pizzaCrust Enum of PizzaOption of the Crust of the pizza
+     * @param pizzaSauce Enum of PizzaOption of the Sauce of the pizza
+     * @param pizzaToppings An array of Toppings from the Topping Class
      */
     public Pizza(Canvas win, PizzaOption pizzaSize, PizzaOption pizzaCrust, PizzaOption pizzaSauce, Topping[] pizzaToppings) {
         canvas = win;
@@ -38,9 +34,6 @@ public class Pizza {
         crust = pizzaCrust;
         sauce = pizzaSauce;
         toppings = pizzaToppings;
-
-        tuna = new Tuna();
-        mushroom = new Mushroom();
 
     }
 
@@ -101,7 +94,7 @@ public class Pizza {
     /**
      * Method to write the information shown in the bottom line of the
      * individual pizza on the screen. This method will display the type of
-     * crust and sauce ordered (once completed)
+     * crust and sauce ordered.
      */
     private void drawBottomLine() {
         String bottomLine = "Crust: " + crust.getName() + ", " + sauce.getName();
@@ -133,6 +126,10 @@ public class Pizza {
 //        canvas.fillRectangle(x - 2, y, 4, 13);
 //        canvas.fillSemiCircle(x - 10, y - 10, 20, 20, false, true);
 //    }
+    /**
+     * Chooses where to draw each topping based on the pizzas top left
+     * coordinates and then calls the draw of the appropriate topping.
+     */
     private void drawToppings() {
         double x = topLeftX + 110;
         double y = topLeftY + 105;
@@ -149,18 +146,12 @@ public class Pizza {
 
         }
     }
-
-//    private void drawTopping(String topping, double x, double y) {
-//        if (topping != null) {
-//            if (topping.equalsIgnoreCase("tuna")) {
-//                tuna.drawTuna(x, y);
-//            } else if (topping.equalsIgnoreCase("mushroom")) {
-//                mushroom.drawMushroom(x, y);
-//            } else {
-//                System.out.println("Error: invalid topping");
-//            }
-//        }
-//    }
+    
+    /**
+     * Calculates the price of the entire pizza and returns it. 
+     * @return returns the price calculated by the chosen requirements of the 
+     * pizza.
+     */
     public double getPrice() {
         double price = 0;
         System.out.println("size" + size.getSize());
@@ -173,22 +164,6 @@ public class Pizza {
             }
         }
         return Math.round(price * 100d) / 100d;
-    }
-
-    public void setSize(PizzaOption newSize) {
-        size = newSize;
-    }
-
-    public void setCrust(PizzaOption newCrust) {
-        crust = newCrust;
-    }
-
-    public void setBbq(PizzaOption newSauce) {
-        sauce = newSauce;
-    }
-
-    public void setTopping(Topping[] newToppings) {
-        toppings = newToppings;
     }
 
 }

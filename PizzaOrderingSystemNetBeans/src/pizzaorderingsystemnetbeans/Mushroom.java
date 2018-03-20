@@ -8,16 +8,26 @@ package pizzaorderingsystemnetbeans;
 import java.awt.Color;
 
 /**
+ * Class Tuna Inherits from Toppings and stores all data about a Tuna object
  *
  * @author up825573
  */
 public class Mushroom extends Topping {
 
-//    Canvas canvas;
+    /**
+     * Constructor for a Mushroom subclass of Topping
+     */
     public Mushroom() {
         super(0.05, Color.GRAY, Color.LIGHT_GRAY);
     }
 
+    /**
+     * Method to draw one Mushroom at the center point of X and Y
+     *
+     * @param x X coordinate of the center point of the topping to draw.
+     * @param y Y coordinate of the center point of the topping to draw.
+     * @param canvas Canvas to which the topping is to be drawn.
+     */
     @Override
     public void draw(double x, double y, Canvas canvas) {
         canvas.setForegroundColor(secondaryColour);

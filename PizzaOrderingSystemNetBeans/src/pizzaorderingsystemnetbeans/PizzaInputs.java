@@ -9,47 +9,56 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
- *
+ * Gets inputs from Keyboard Input, checks and returns if they are valid. 
  * @author 825573
  */
 public class PizzaInputs {
 
     private KeyboardInput inputs;
 
+    /**
+     *Constructor for PizzaInputs.
+     */
     public PizzaInputs() {
         inputs = new KeyboardInput();
     }
 
-    public String enterSize() {
-        String enteredSize;
-        String[] sizes = {"small", "medium", "large"};
-        do {
-            System.out.println("\nValid sizes are: ");
-            for (String size : sizes) {
-                System.out.println(size);
-            }
-            System.out.println("Please enter a valid Size: ");
-            enteredSize = inputs.getInputString();
-        } while (!(Arrays.asList(sizes).contains(enteredSize)));
-        return enteredSize;
+//    public String enterSize() {
+//        String enteredSize;
+//        String[] sizes = {"small", "medium", "large"};
+//        do {
+//            System.out.println("\nValid sizes are: ");
+//            for (String size : sizes) {
+//                System.out.println(size);
+//            }
+//            System.out.println("Please enter a valid Size: ");
+//            enteredSize = inputs.getInputString();
+//        } while (!(Arrays.asList(sizes).contains(enteredSize)));
+//        return enteredSize;
+//
+//    }
 
-    }
+//    public String enterCrust() {
+//        String enteredCrust;
+//        String[] crusts = {"deep pan", "thin crust", "stuffed crust"};
+//        do {
+//            System.out.println("\nValid crusts are: ");
+//            for (String crust : crusts) {
+//                System.out.println(crust);
+//            }
+//            System.out.println("Please enter a valid crust: ");
+//            enteredCrust = inputs.getInputString();
+//        } while (!(Arrays.asList(crusts).contains(enteredCrust)));
+//        return enteredCrust;
+//
+//    }
 
-    public String enterCrust() {
-        String enteredCrust;
-        String[] crusts = {"deep pan", "thin crust", "stuffed crust"};
-        do {
-            System.out.println("\nValid crusts are: ");
-            for (String crust : crusts) {
-                System.out.println(crust);
-            }
-            System.out.println("Please enter a valid crust: ");
-            enteredCrust = inputs.getInputString();
-        } while (!(Arrays.asList(crusts).contains(enteredCrust)));
-        return enteredCrust;
-
-    }
-
+    /**
+     * Asks the user to keep tomato sauce or change to BBQ if true TOMATO if 
+     * negative.
+     * @return Enum of PizzaOption either TOMATO or BBQ for sauce. BBQ if true 
+     * TOMATO if negative
+     */
     public PizzaOption changeSauce() {
         String enteredValue;
         System.out.println("\nPlease enter either : \"y\" to change sauce to BBQ or : \"n\" to keep Tomato sauce");
@@ -117,6 +126,14 @@ public class PizzaInputs {
 //        return toppings;
 //
 //    }
+
+    /**
+     * Makes an array of Toppings based on chosen Toppings. 
+     * @param validToppings String Array of toppings that the text input can 
+     * match with.
+     * @param toppings Toppings array of Topping objects to be returned 
+     * @return Topping array of 0,1 or 2 Toppings on it based on user input
+     */
     public Topping[] enterToppings(String[] validToppings, Topping[] toppings) {
         Topping[] chosenToppings = {null, null};
         String enteredTopping = "";
@@ -143,7 +160,13 @@ public class PizzaInputs {
         }
         return chosenToppings;
     }
-
+    
+    /**
+     * Allows the user to select an integer from an array of integers.
+     * @param validNumbers The numbers that the user can choose from
+     * @param toChoose The short text description of what the number represents
+     * @return The valid chosen Number defined by the user 
+     */
     public int getInput(Integer[] validNumbers, String toChoose) {
         int chosenInt = 0;
         boolean incorrect = false;
@@ -166,7 +189,14 @@ public class PizzaInputs {
         System.out.println("Returned Get Input int " + chosenInt);
         return chosenInt;
     }
-
+    
+    /**
+     * Asks the user if they would like to do something (defined by task) and
+     * returns their answer as a binary output.
+     * @param task Task is the prompt to ask the user with a binary outcome.
+     * @return Returns a binary value based on the users answer to the posed 
+     * task.
+     */
     public boolean proceed(String task) {
         String enteredValue = "";
         boolean invalid = false;
@@ -200,6 +230,17 @@ public class PizzaInputs {
 //
 //        return enteredValue;
 //    }
+
+    /**
+     * Gets the validated PizzaOption from the user based on given Strings
+     * @param validOptions A String array of valid strings referencing the 
+     * PizzaOptions enumerations.
+     * @param itemToChoose A short description of what the users are choosing
+     * @param options The PizzaOptions to be chosen from based on matching with 
+     * the String equivalent 
+     * @return Returns an ENUMERATION from PizzaOptions equivalent to the String
+     * form of the same name
+     */
     public PizzaOption getInput(String[] validOptions, String itemToChoose, PizzaOption[] options) {
         String enteredValue = "";
         while (enteredValue != (null)) {
@@ -222,6 +263,15 @@ public class PizzaInputs {
         return options[0];
     }
 
+    /**
+     * Allows the user to select an integer from an Range of integers.
+     * @param lowest The lowest possible integer in the range  inclusive of 
+     * itself.
+     * @param highest The Highest possible integer in the range inclusive of 
+     * itself.
+     * @param toChoose The short text description of what the number represents
+     * @return The valid chosen Number defined by the user 
+     */
     public int getInput(int lowest, int highest, String toChoose) {
         int chosenInt = 0;
         do {
@@ -236,6 +286,7 @@ public class PizzaInputs {
         System.out.println("Returned Get Input int " + chosenInt);
         return chosenInt;
     }
+  
 
 //    public String getInput(PizzaOption[] toppings, String itemToChoose){
 //        String enteredTopping;

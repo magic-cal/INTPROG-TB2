@@ -12,6 +12,9 @@
             </test-roots>
         </data>
         <spellchecker-wordlist xmlns="http://www.netbeans.org/ns/spellchecker-wordlist/1">
+            <word>Accessor</word>
+            <word>colour</word>
+            <word>enum</word>
             <word>pizzas</word>
         </spellchecker-wordlist>
     </configuration>

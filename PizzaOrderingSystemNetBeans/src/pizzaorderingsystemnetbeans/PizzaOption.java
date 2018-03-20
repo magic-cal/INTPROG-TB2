@@ -6,7 +6,7 @@
 package pizzaorderingsystemnetbeans;
 
 /**
- *
+ * Stored enumeration values for possible Pizza Options
  * @author Callum
  */
 public enum PizzaOption {
@@ -24,20 +24,38 @@ public enum PizzaOption {
     private double price;
     private double size;
 
+    /**
+     * Constructor for PizzaOptions
+     * @param pName The name of the Pizza Option
+     * @param pPrice The price of the Pizza Option
+     * @param pSize The size of the Pizza Option
+     */
     PizzaOption(String pName, double pPrice, double pSize) {
         name = pName;
         price = pPrice;
         size = pSize;
     }
 
+    /**
+     * Accessor Method for PizzaOptions enum price
+     * @return Name of the PizzaOption
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Accessor Method for PizzaOptions enum price
+     * @return Price of the PizzaOption
+     */
     public double getPrice() {
         return price;
     }
 
+    /**
+     * Accessor Method for PizzaOptions enum price
+     * @return size of the PizzaOption
+     */
     public double getSize() {
         return size;
     }

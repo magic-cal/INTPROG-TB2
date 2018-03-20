@@ -1,22 +1,24 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package pizzaorderingsystemnetbeans;
 
-/**
- *
- * @author up825573
- */
 import java.awt.Color;
 
+/**
+ *Class Topping is a generalized class to allow inheritance to other sub-toppings
+ * @author 825573
+ */
 public class Topping {
 
-    protected double price;
+    private double price;
     protected Color primaryColour;
     protected Color secondaryColour;
 
+    /**
+     * Constructor for a generalized Topping
+     * @param pPrice Price per piece of topping.
+     * @param pPrimaryColour The main colour of the topping.
+     * @param pSecondaryColour The accent colour of the topping.
+     */
     public Topping(double pPrice, Color pPrimaryColour, Color pSecondaryColour) {
 
         price = pPrice;
@@ -24,10 +26,20 @@ public class Topping {
         secondaryColour = pSecondaryColour;
     }
 
+    /**
+     * Generalized method to get the price of one piece of the topping
+     * @return returns the price of a specific topping
+     */
     public double getPrice() {
         return price;
     }
 
+    /**
+     * Generalized method to draw a topping 
+     * @param x X coordinate of the center point of the topping to draw.
+     * @param y Y coordinate of the center point of the topping to draw.
+     * @param canvas Canvas to which the topping is to be drawn.
+     */
     public void draw(double x, double y, Canvas canvas) {
         System.out.println("Error, Nothing to draw");
     }

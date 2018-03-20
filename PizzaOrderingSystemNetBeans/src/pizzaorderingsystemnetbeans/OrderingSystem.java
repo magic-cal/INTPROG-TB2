@@ -15,11 +15,10 @@ public class OrderingSystem {
     private Canvas canvas;
     private PizzaInputs pizzaInputs = new PizzaInputs();
     private ArrayList<Pizza> pizzas = new ArrayList();
-    int currentIndex = 0;
+    private int currentIndex = 0;
     private PizzaOption[] options;
     private Topping[] availableToppings = {new Tuna(), new Mushroom(), null};
 
-//    PizzaOption options  = PizzaOption;
     /**
      * Constructor for the ordering system.
      */
@@ -49,7 +48,7 @@ public class OrderingSystem {
     }
 
     /**
-     * Method to manage the ordering of the pizzas (once completed).
+     * Method to manage the ordering of the pizzas.
      */
     public void startOrdering() {
 
@@ -75,24 +74,17 @@ public class OrderingSystem {
             pizzas.add(choosePizza());
             updateOrderScreen();
         } while (pizzaInputs.proceed("Would you like to input another pizza?"));
-////        
-//        System.out.println("======================");
-//        pizzas.add(choosePizza());
-//        updateOrderScreen();
+
         extendedFunctionality();
-
-        try {
-            Thread.sleep(5000);
-            changeScreen(6);
-            updateOrderScreen();
-            Thread.sleep(5000);
-            System.exit(0);
-        } catch (Exception ex) {
-            System.out.println("Error");
-        }
-
     }
 
+    /**
+     * This generated the 3x2 grid of Pizzas from the ArrayList of Pizzas and
+     * displays them on the Canvas through the DisplayPizza method in Pizza
+     *
+     * @param currentScreen Is an index of which page the user is on. index 0 =
+     * first page.
+     */
     public void displayPizzas(int currentScreen) {
         for (int i = 0; i < 600 && currentScreen < pizzas.size(); i += 300) {
             for (int j = 0; j <= 600 && currentScreen < pizzas.size(); j += 300, currentScreen++) {
@@ -101,14 +93,12 @@ public class OrderingSystem {
         }
     }
 
-//    public Pizza choosePizza() {
-//        String size = pizzaInputs.enterSize();
-//        String crust = pizzaInputs.enterCrust();
-//        boolean changeSauce = pizzaInputs.changeSauce();
-//        String[] toppings = pizzaInputs.enterToppings();
-//        Pizza chosenPizza = new Pizza(canvas, size, crust, changeSauce, toppings);
-//        return chosenPizza;
-//    }
+    /**
+     * Using the PizzaInput class, the user can create a Pizza based on inputs.
+     *
+     * @return returns the chosen Pizza as created by using the PizzaInputs to
+     * return the enum or object appropriate to the input.
+     */
     public Pizza choosePizza() {
         PizzaOption[] sizes = {options[2], options[3], options[4]};
         PizzaOption[] crusts = {options[5], options[6], options[7]};
@@ -122,6 +112,14 @@ public class OrderingSystem {
         return chosenPizza;
     }
 
+    /**
+     *
+     * This gets the price from each Pizza on screen and sums their prices.
+     *
+     * @return The total price of pizzas on the screen
+     * @param index Is an index of which page the user is on. index 0 = first
+     * page.
+     */
     private double calculatePrice(int index) {
         double totPrice = 0;
         for (int i = index; i < index + 6 && index + i < pizzas.size() + index; i++) {
@@ -131,12 +129,24 @@ public class OrderingSystem {
         return totPrice;
     }
 
+    /**
+     *
+     * Calls DrawString Method from Canvas to add new Price to current canvas 
+     * of only the current pizzas shown(max 6)
+     * @param index Is an index of which page the user is on. index 0 = first
+     */
     private void updatePrice(int currentScreen) {
         canvas.setForegroundColor(Color.BLACK);
         canvas.setFontSize(25);
         canvas.drawString("Total Price of the Order: £" + String.format("%.2f", calculatePrice(currentScreen)), 10, 640);
     }
 
+    /**
+     *Refreshes the entire screen by removing and redrawing everything by 
+     * calling other methods
+     *
+     *
+     */
     private void updateOrderScreen() {
         canvas.erase();
         drawOrderScreen();
@@ -145,16 +155,24 @@ public class OrderingSystem {
 
     }
 
+    /**
+     *Sets the current screen index to the New screen index. This updates the
+     * current screent to reflect the change.
+     * @param newIndex Is an index of which page the user is wanting to see.
+     */
     private void changeScreen(int newIndex) {
-//        if (newIndex % 6 == 0 && pizzas.size() >= newIndex) {
         currentIndex = newIndex * 6;
         updateOrderScreen();
-
-//        } else {
-//            System.out.println("that was not a valid page");
-//        }
     }
 
+    /**
+     *
+     * This function checks if the user would like to use: 
+     * Extended functionality,
+     * Change Screen
+     * and Change/edit pizzas.
+     * 
+     */
     private void extendedFunctionality() {
         int currentPizza;
         while (pizzaInputs.proceed("Would you like to use extended functionality?")) {
@@ -179,9 +197,3 @@ public class OrderingSystem {
 
     }
 }
-
-//if the user inputs invalid data the user should receive an appropriate error message, and be re-prompted until the entered data is valid.
-//You will be required to produce documentation, using the JavaDoc format of commenting the classes. A
-//brief description should be given for each class, constructor, and method. Both constructors and methods
-//need to provide details about their parameters (where relevant). For methods which are not declared as
-//void, details of the value returned should be provided. 
