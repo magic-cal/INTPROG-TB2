@@ -2,8 +2,6 @@ package pizzaorderingsystemnetbeans;
 
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.stream.IntStream;
 
 /**
  * Class to manage the pizza order.
@@ -13,18 +11,20 @@ import java.util.stream.IntStream;
 public class OrderingSystem {
 
     private Canvas canvas;
-    private PizzaInputs pizzaInputs = new PizzaInputs();
-    private ArrayList<Pizza> pizzas = new ArrayList();
-    private int currentIndex = 0;
-    private PizzaOption[] options;
-    private Topping[] availableToppings = {new Tuna(), new Mushroom(), null};
+    private PizzaInputs pizzaInputs;
+    private ArrayList<Pizza> pizzas;
+    private int currentIndex;
+    private Topping[] availableToppings;
 
     /**
      * Constructor for the ordering system.
      */
     public OrderingSystem() {
         canvas = new Canvas("Pizza Ordering", 900, 650);
-        options = PizzaOption.values();
+        pizzaInputs = new PizzaInputs();
+        pizzas = new ArrayList();
+        currentIndex = 0;
+        availableToppings = new Topping[]{new Tuna(), new Mushroom(), null};
     }
 
     /**
@@ -100,8 +100,8 @@ public class OrderingSystem {
      * return the enum or object appropriate to the input.
      */
     public Pizza choosePizza() {
-        PizzaOption[] sizes = {options[2], options[3], options[4]};
-        PizzaOption[] crusts = {options[5], options[6], options[7]};
+        PizzaOption[] sizes = {PizzaOption.SMALL, PizzaOption.MEDIUM, PizzaOption.LARGE};
+        PizzaOption[] crusts = {PizzaOption.DEEPPAN, PizzaOption.THINCRUST, PizzaOption.STUFFEDCRUST};
 
         PizzaOption size = pizzaInputs.getInput(new String[]{"small", "medium", "large"}, "Pizza Size", sizes);
         PizzaOption crust = pizzaInputs.getInput(new String[]{"deep pan", "thin crust", "stuffed crust"}, "Pizza Crust", crusts);
@@ -131,8 +131,9 @@ public class OrderingSystem {
 
     /**
      *
-     * Calls DrawString Method from Canvas to add new Price to current canvas 
-     * of only the current pizzas shown(max 6)
+     * Calls DrawString Method from Canvas to add new Price to current canvas of
+     * only the current pizzas shown(max 6)
+     *
      * @param index Is an index of which page the user is on. index 0 = first
      */
     private void updatePrice(int currentScreen) {
@@ -142,7 +143,7 @@ public class OrderingSystem {
     }
 
     /**
-     *Refreshes the entire screen by removing and redrawing everything by 
+     * Refreshes the entire screen by removing and redrawing everything by
      * calling other methods
      *
      *
@@ -156,8 +157,9 @@ public class OrderingSystem {
     }
 
     /**
-     *Sets the current screen index to the New screen index. This updates the
-     * current screent to reflect the change.
+     * Sets the current screen index to the New screen index. This updates the
+     * current screen to reflect the change.
+     *
      * @param newIndex Is an index of which page the user is wanting to see.
      */
     private void changeScreen(int newIndex) {
@@ -167,11 +169,9 @@ public class OrderingSystem {
 
     /**
      *
-     * This function checks if the user would like to use: 
-     * Extended functionality,
-     * Change Screen
-     * and Change/edit pizzas.
-     * 
+     * This function checks if the user would like to use: Extended
+     * functionality, Change Screen and Change/edit pizzas.
+     *
      */
     private void extendedFunctionality() {
         int currentPizza;
@@ -182,11 +182,12 @@ public class OrderingSystem {
             }
             while (pizzaInputs.proceed("Would you like change and delete pizzas")) {
                 System.out.println("pizzas.size+ " + (pizzas.size()));
-                currentPizza = pizzaInputs.getInput(0, (pizzas.size() - 1), "Pizza");
+                currentPizza = pizzaInputs.getInput(0, (pizzas.size() - 1), "Selectable Pizza");
                 if (pizzaInputs.proceed("Would you like to delete pizza : " + currentPizza)) {
                     pizzas.remove(currentPizza);
                     updateOrderScreen();
                 } else if (pizzaInputs.proceed("Would you like to edit pizza : " + currentPizza)) {
+                    pizzas.remove(currentPizza);
                     pizzas.add(currentIndex, choosePizza());
                     updateOrderScreen();
                 }
