@@ -14,7 +14,7 @@ public class Topping {
     protected Color secondaryColour;
 
     /**
-     * Constructor for a generalized Topping
+     * Constructor for a generalised Topping
      * @param pPrice Price per piece of topping.
      * @param pPrimaryColour The main colour of the topping.
      * @param pSecondaryColour The accent colour of the topping.
@@ -27,17 +27,17 @@ public class Topping {
     }
 
     /**
-     * Generalized method to get the price of one piece of the topping
+     * generalised method to get the price of one piece of the topping
      * @return returns the price of a specific topping
-     */
+     */             
     public double getPrice() {
         return price;
     }
 
     /**
-     * Generalized method to draw a topping 
-     * @param x X coordinate of the center point of the topping to draw.
-     * @param y Y coordinate of the center point of the topping to draw.
+     * generalised method to draw a topping 
+     * @param x X coordinate of the centre point of the topping to draw.
+     * @param y Y coordinate of the centre point of the topping to draw.
      * @param canvas Canvas to which the topping is to be drawn.
      */
     public void draw(double x, double y, Canvas canvas) {

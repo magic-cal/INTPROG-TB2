@@ -22,22 +22,22 @@ public enum PizzaOption {
 
     private String name;
     private double price;
-    private double size;
+    private double area;
 
     /**
      * Constructor for PizzaOptions
      * @param pName The name of the Pizza Option
      * @param pPrice The price of the Pizza Option
-     * @param pSize The size of the Pizza Option
+     * @param pArea The size of the Pizza Option
      */
-    PizzaOption(String pName, double pPrice, double pSize) {
+    PizzaOption(String pName, double pPrice, double pArea) {
         name = pName;
         price = pPrice;
-        size = pSize;
+        area = pArea;
     }
 
     /**
-     * Accessor Method for PizzaOptions enum price
+     * Accessor Method for PizzaOptions enum name
      * @return Name of the PizzaOption
      */
     public String getName() {
@@ -46,17 +46,17 @@ public enum PizzaOption {
 
     /**
      * Accessor Method for PizzaOptions enum price
-     * @return Price of the PizzaOption
+     * @return price of the PizzaOption
      */
     public double getPrice() {
         return price;
     }
 
     /**
-     * Accessor Method for PizzaOptions enum price
-     * @return size of the PizzaOption
+     * Accessor Method for PizzaOptions enum area
+     * @return area of the PizzaOption
      */
-    public double getSize() {
-        return size;
+    public double getArea() {
+        return area;
     }
 }

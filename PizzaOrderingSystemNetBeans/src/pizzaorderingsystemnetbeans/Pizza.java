@@ -154,9 +154,9 @@ public class Pizza {
      */
     public double getPrice() {
         double price = 0;
-        System.out.println("size" + size.getSize());
+        System.out.println("size" + size.getArea());
         System.out.println("crust " + crust.getPrice());
-        price += crust.getPrice() * size.getSize();
+        price += crust.getPrice() * size.getArea();
         price += sauce.getPrice();
         for (int i = 0; i < toppings.length; i++) {
             if (toppings[i] != null) {
