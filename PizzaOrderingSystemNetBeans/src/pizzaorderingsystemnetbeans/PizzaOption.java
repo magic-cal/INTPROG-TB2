@@ -7,7 +7,7 @@ package pizzaorderingsystemnetbeans;
 
 /**
  * Stored enumeration values for possible Pizza Options
- * @author Callum
+ * @author UP825573
  */
 public enum PizzaOption {
 
